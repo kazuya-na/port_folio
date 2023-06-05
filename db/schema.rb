@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_05_070119) do
+ActiveRecord::Schema.define(version: 2023_06_05_110109) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2023_06_05_070119) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "end_user_id", null: false
+    t.integer "chat_room_id", null: false
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -39,6 +51,43 @@ ActiveRecord::Schema.define(version: 2023_06_05_070119) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "end_user_id", null: false
+    t.integer "post_id", null: false
+  end
+
+  create_table "post_comments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "post_id", null: false
+    t.text "body", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "end_user_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.string "vital_record", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
+  end
+
+  create_table "room_users", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "end_user_id", null: false
+    t.integer "chat_room_id", null: false
   end
 
 end
