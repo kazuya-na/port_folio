@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :end_users, only: [:show, :edit, :update]
     get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
     patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
-    resources :posts, only: [:new, :index, :destroy] do
+    resources :posts, only: [:new, :create, :index, :destroy] do
       resources:post_comments, only: [:create, :destroy]
       resource:favorites, only: [:create, :destroy]
     end
