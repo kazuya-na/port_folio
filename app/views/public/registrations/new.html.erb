@@ -9,6 +9,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :'ニックネーム' %><br />
+    <%= f.text_field :nick_name, autocomplete: "nick_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :'生年月日' %><br />
+    <%= f.text_field :date_of_birth, autocomplete: "date_of_birth" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
