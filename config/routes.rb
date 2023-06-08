@@ -7,21 +7,26 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+
   namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :end_users, only: [:index, :show, :edit, :update]
   end
+
+
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
+
+    get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
+    patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
+    get 'end_users/record_index' => 'end_users#record_index', as: 'record'
     resources :end_users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
-    get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
-    patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
     resources :posts, only: [:new, :create, :index, :destroy] do
       resource:favorites, only: [:create, :destroy]
       resources:post_comments, only: [:create, :destroy]

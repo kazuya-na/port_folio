@@ -3,19 +3,18 @@ class Public::PostsController < ApplicationController
     @post = Post.new
   end
 
-  def index
-    @post = Post.new
-    @posts = Post.all
-  end
-
-
   def create
     @post = Post.new(post_params)
+    @post.end_user_id = current_end_user.id
     if @post.save
-       redirect_to posts_path
+       redirect_to action: 'index'
     else
-       render 'new'
+      redirect_to request.referer
     end
+  end
+
+  def index
+    @posts = Post.all
   end
 
   def destroy

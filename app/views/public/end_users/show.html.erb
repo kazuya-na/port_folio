@@ -1,1 +1,8 @@
 <h1>mypage</h1>
+<%= link_to '記録一覧', record_path %>
+<%= link_to '退会はこちら', withdraw_confirm_path %><br>
+<div>
+  <%= current_end_user.nick_name %><br>
+  <%= current_end_user.gender %><br>
+  <%= current_end_user.date_of_birth %>
+</div>

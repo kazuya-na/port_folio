@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_07_004016) do
+ActiveRecord::Schema.define(version: 2023_06_08_112516) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -64,7 +64,17 @@ ActiveRecord::Schema.define(version: 2023_06_07_004016) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "end_user_id", null: false
     t.string "title", null: false
-    t.text "body", null: false
+    t.text "introduction", null: false
+  end
+
+  create_table "diaries", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "date", null: false
+    t.integer "bp", null: false
+    t.integer "bt", null: false
+    t.integer "weight", null: false
+    t.text "exercise", null: false
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -74,8 +84,8 @@ ActiveRecord::Schema.define(version: 2023_06_07_004016) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "nick_name"
-    t.boolean "sex", default: false, null: false
-    t.integer "date_of_birth"
+    t.boolean "gender", default: false, null: false
+    t.date "date_of_birth"
     t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -104,7 +114,6 @@ ActiveRecord::Schema.define(version: 2023_06_07_004016) do
     t.integer "end_user_id", null: false
     t.string "title", null: false
     t.text "body", null: false
-    t.string "vital_record", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
