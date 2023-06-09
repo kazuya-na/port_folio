@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-
   namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :end_users, only: [:index, :show, :edit, :update]
