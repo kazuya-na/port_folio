@@ -1,12 +1,20 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-8 mx-auto text-center">
-      <h1>60代向けSNS 運動日誌</h1>
+      <h1><strong>60代向けSNS 運動日誌</strong></h1>
       <p>
         運動不足になりがちな退職後の60代に向けての運動記録サイトです。<br>
         また、同じ様に運動をしているユーザ同士が投稿機能を使って交流できるのが特徴です。<br>
         60代でSNSに慣れていない方でも使いやすい設計です。
       </p>
+    </div>
+    <div class="btn-wrapper col-6 mx-auto">
+      <div class="row">
+        <%= link_to 'Log in',new_end_user_session_path, class: "btn btn-outline-info btn-sm btn-block mb-3 sign_in" %>
+      </div>
+      <div class="row">
+        <%= link_to 'Sign Up',new_end_user_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
+      </div>
     </div>
   </div>
 </div>

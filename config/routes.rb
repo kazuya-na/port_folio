@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
+
   namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :end_users, only: [:index, :show, :edit, :update]
@@ -19,7 +20,6 @@ Rails.application.routes.draw do
 
     get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
     patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
-    get 'end_users/record_index' => 'end_users#record_index', as: 'record'
     resources :end_users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
