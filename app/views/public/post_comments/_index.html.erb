@@ -1,0 +1,19 @@
+<table>
+ <tbody>
+  <% post.post_comments.each do |post_comment| %>
+   <tr>
+    <td>
+     <%= link_to(post_comment.end_user) do %>
+      <%= post_comment.end_user.nick_name %>
+     <% end %>
+    </td>
+    <td><%= post_comment.body %></td>
+    <td>
+     <% if post_comment.end_user == current_end_user %>
+      <%= link_to 'Destroy', post_post_comment_path(post,post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
+     <% end %>
+    </td>
+   </tr>
+  <% end %>
+ </tbody>
+</table>

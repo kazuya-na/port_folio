@@ -26,11 +26,12 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
 
-    resources :posts, only: [:new, :create, :index, :destroy] do
+    resources :posts, only: [:new, :create, :index, :show, :destroy] do
       resource:favorites, only: [:create, :destroy]
       resources:post_comments, only: [:create, :destroy]
     end
 
+    resources :diaries, only: [:create, :index, :show, :edit, :update, :destroy]
     resources :room_users, only: [:create, :destroy]
     resources :chat_messages, only: [:create, :show, :destroy]
     resources :chat_rooms, only: [:new, :create, :index, :show, :destroy]

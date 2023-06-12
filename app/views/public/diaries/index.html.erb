@@ -1,0 +1,41 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col">
+      <h1><%= current_end_user.nick_name %>さんの日誌</h1>
+      <% @diaries.each do |diary| %>
+        <%= link_to diary.date, diary_path(diary.id) %><br>
+      <% end %>
+    </div>
+    <div class="col">
+      <%= form_with model: @diary_new do |f| %>
+
+        <div class="form-group">
+          <%= f.label :'日付' %><br>
+          <%= f.date_field :date %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'血圧' %><br>
+          <%= f.text_field :dbp, size: '5' %> / <%= f.text_field :sbp, size: '5' %> mmHg
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'体温' %><br>
+          <%= f.text_field :bt, size: '5' %> ℃
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'体重' %><br>
+          <%= f.text_field :weight, size: '5' %> kg
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'運動記録' %><br>
+          <%= f.text_area :exercise, size: '50x5' %>
+        </div>
+
+          <%= f.submit "送信" %>
+      <% end %>
+    </div>
+  </div>
+</div>
