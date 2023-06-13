@@ -17,10 +17,17 @@
         </div>
 
         <div class="field">
-          <%= f.radio_button :gender, 1 %>
-          <%= f.label :gender, :man %>
-          <%= f.radio_button :gender, 2 %>
-          <%= f.label :gender, :woman %>
+          <%= f.radio_button :gender, EndUser.genders.key(0) %>
+          <%= f.label :gender, EndUser.genders_i18n[:gender_private], value: EndUser.genders.key(0) %>
+
+          <%= f.radio_button :gender, EndUser.genders.key(1) %>
+          <%= f.label :gender, EndUser.genders_i18n[:male], value: EndUser.genders.key(1) %>
+
+          <%= f.radio_button :gender, EndUser.genders.key(2) %>
+          <%= f.label :gender, EndUser.genders_i18n[:female], value: EndUser.genders.key(1) %>
+
+          <%= f.radio_button :gender, EndUser.genders.key(3) %>
+          <%= f.label :gender, EndUser.genders_i18n[:others], value: EndUser.genders.key(1) %>
         </div>
 
         <div class="field">

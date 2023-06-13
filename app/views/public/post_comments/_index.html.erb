@@ -2,11 +2,7 @@
  <tbody>
   <% post.post_comments.each do |post_comment| %>
    <tr>
-    <td>
-     <%= link_to(post_comment.end_user) do %>
-      <%= post_comment.end_user.nick_name %>
-     <% end %>
-    </td>
+    <td><%= post_comment.end_user.nick_name %> ：</td>
     <td><%= post_comment.body %></td>
     <td>
      <% if post_comment.end_user == current_end_user %>

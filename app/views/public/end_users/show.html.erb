@@ -9,8 +9,12 @@
     <div class="col">
       <%= current_end_user.email %><br>
       <%= current_end_user.nick_name %><br>
-      <%= current_end_user.gender %><br>
-      <%= current_end_user.date_of_birth %>
+      <%= current_end_user.gender_i18n %><br>
+      <%= "#{current_end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - current_end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %>
+
+      <% date = current_end_user.date_of_birth.strftime('%u').to_i %>
+      <% w = ['月', '火', '水', '木', '金', '土', '日'] %>
+      <%= w[date - 1] %>
     </div>
   </div>
 </div>
