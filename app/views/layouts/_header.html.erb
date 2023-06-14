@@ -18,7 +18,7 @@
             <%= link_to '投稿一覧', posts_path, class:'nav-link text-light btn btn-dark ml-2' %>
           </li>
           <li>
-            <%= link_to '日誌', end_user_path(current_end_user), class:'nav-link text-light btn btn-dark ml-2' %>
+            <%= link_to 'プロフィール', end_user_path(current_end_user), class:'nav-link text-light btn btn-dark ml-2' %>
           </li>
           <li>
             <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, class:'nav-link text-light btn btn-dark ml-2' %>

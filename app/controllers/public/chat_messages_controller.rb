@@ -14,12 +14,12 @@ class Public::ChatMessagesController < ApplicationController
   end
 
   def show
-    #@chat_room = ChatRoom.find(params[:id])
+    @chat_room_find = ChatRoom.find(params[:id])
     @end_user = EndUser.find(params[:id])
     chat_rooms = current_end_user.room_users.pluck(:chat_room_id)
     room_users = RoomUser.find_by(end_user_id: @end_user.id, chat_room_id: chat_rooms)
 
-    unless user_rooms.nil?
+    unless room_users.nil?
       @chat_room = room_users.chat_room
     else
       @chat_room = ChatRoom.new
@@ -32,7 +32,14 @@ class Public::ChatMessagesController < ApplicationController
   end
 
   def destroy
+    @chat_room = ChatRoom.find(params[:chat_room_id])
+    message = @chat_room.chat_messages.find(params[:id])
+    message.destroy
+    flash[:notice] = 'コメントを削除しました。'
+    redirect_to request.referer
   end
+
+  private
 
   def chat_message_params
     params.require(:chat_message).permit(:end_user_id, :chat_room_id, :body)

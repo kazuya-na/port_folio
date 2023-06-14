@@ -1,20 +1,22 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-12">
-      <h1><%= current_end_user.nick_name %>さんのプロフィール</h1>
-      <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-danger' %>
-      <%= link_to '編集', edit_end_user_path(current_end_user), class: 'btn btn-success' %>
-      <%= link_to '日誌', diaries_path, class: 'btn btn-info' %>
+      <h1><%= @end_user.nick_name %>さんのプロフィール</h1>
+      <% if @end_user == current_end_user %>
+        <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-danger' %>
+        <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success' %>
+        <%= link_to '日誌', diaries_path, class: 'btn btn-info' %>
+      <% end %>
+      <% unless @end_user.id == current_end_user.id %>
+        <% if current_end_user.following?(@end_user) %>
+          <%= link_to "フォロー外す", end_user_relationships_path(@end_user.id), method: :delete, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "btn btn-success" %>
+        <% end %>
+      <% end %>
     </div>
     <div class="col">
-      <%= current_end_user.email %><br>
-      <%= current_end_user.nick_name %><br>
-      <%= current_end_user.gender_i18n %><br>
-      <%= "#{current_end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - current_end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %>
-
-      <% date = current_end_user.date_of_birth.strftime('%u').to_i %>
-      <% w = ['月', '火', '水', '木', '金', '土', '日'] %>
-      <%= w[date - 1] %>
+      <%= render 'info', end_user: @end_user %>
     </div>
   </div>
 </div>

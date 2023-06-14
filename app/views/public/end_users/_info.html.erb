@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <th>メールアドレス</th>
+    <th>ニックネーム</th>
+    <th>性別</th>
+    <th>生年月日(年齢)</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= end_user.email %></td>
+      <td>
+        <%= image_tag end_user.get_profile_image, size:'40x40' %>
+        <%= end_user.nick_name %>
+      </td>
+      <td><%= end_user.gender_i18n %></td>
+      <td>
+        <%= "#{end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %>
+      </td>
+    </tr>
+    <tr>
+      <td>フォロー数：<%= end_user.followings.count %></td>
+    </tr>
+    <tr>
+      <td>フォロワー数：<%= end_user.followers.count %></td>
+    </tr>
+    <tr>
+      <td>自己紹介：<%= end_user.introduction %></td>
+    </tr>
+  </tbody>
+</table>

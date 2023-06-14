@@ -1,24 +1,25 @@
-<%= alert %>
-<%= notice %>
-<div class="container">
+<%= alert %><%= notice %>
+<div class="container p-5">
   <div class="row">
     <div class="col">
       <h1><%= @chat_room.title %></h1>
     </div>
     <div class="col">
       <% @chat_messages.each do |chat_message| %>
-        <%= chat_message.end_user.nick_name %>
+        <%= link_to(chat_message.end_user) do %>
+          <%= image_tag chat_message.end_user.get_profile_image, size:'40x40' %>
+          <%= chat_message.end_user.nick_name %>
+        <% end %>
         <%= chat_message.body %>
+        <% if chat_message.end_user == current_end_user %>
+          <%= link_to 'Destroy', chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
+        <% end %>
       <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <%= form_with model: @chat_message do |f| %>
-        <%= f.hidden_field :chat_room_id, value: @chat_room.id %>
-        <%= f.text_area :body,size: '50x5' %><br>
-        <%= f.submit '送信', class: 'btn btn-sm btn-primary' %>
-      <% end %>
+      <%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %>
     </div>
   </div>
 </div>

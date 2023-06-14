@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>日誌編集</h1>
+      <div class="form-group">
+      <%= form_with model: @diary, local:true do |f| %>
+
+        <div class="form-group">
+          <%= f.label :'日付' %><br>
+          <%= f.date_field :date %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'血圧' %><br>
+          <%= f.text_field :dbp, size: '5' %> / <%= f.text_field :sbp, size: '5' %> mmHg
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'体温' %><br>
+          <%= f.text_field :bt, size: '5' %> ℃
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'体重' %><br>
+          <%= f.text_field :weight, size: '5' %> kg
+        </div>
+
+        <div class="form-group">
+          <%= f.label :'運動記録' %><br>
+          <%= f.text_area :exercise, size: '50x5' %>
+        </div>
+
+          <%= f.submit "送信" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

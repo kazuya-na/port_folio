@@ -30,7 +30,7 @@ class Public::ChatRoomsController < ApplicationController
   def destroy
     chat_room = ChatRoom.find(params[:id])
     chat_room.destroy
-    flash[:notice] = '商品を削除しました。'
+    flash[:notice] = 'チャットルームを削除しました。'
     redirect_to request.referer
   end
 

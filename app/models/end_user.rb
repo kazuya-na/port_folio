@@ -18,9 +18,27 @@ class EndUser < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_one_attached :profile_image
+
+  def get_profile_image
+    (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+
+  def follow(end_user_id)
+    active_relationships.create(followed_id: end_user_id)
+  end
+
+  def unfollow(end_user_id)
+    active_relationships.find_by(followed_id: end_user_id).destroy
+  end
+
+  def following?(end_user)
+    followings.include?(end_user)
+  end
+
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   enum gender: { gender_private: 0, male: 1, female: 2, others: 3 }
 end
