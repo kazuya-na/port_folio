@@ -1,15 +1,21 @@
 <%= notice %>
 <div class="container p-5">
-  <div class="row text-center">
-    <div class="col-12">
-      <h1><strong>投稿詳細画面</strong></h1>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="pb-4"><strong>投稿詳細画面</strong></h1>
     </div>
-    <div class="col-12 pt-4">
-      <h3><%= @post.title %></h3><br>
-      <p><%= @post.body %></p>
+    <div class="col-6 text-center p-4">
+      <h3>タイトル</h3>
+      <h3 class="border border-dark bg-light p-4"><%= @post.title %></h3><br>
+      <h3>本文</h3>
+      <h4 class="border border-dark bg-light p-4"><%= @post.body %></h4>
+    </div>
+    <div class="col-6">
       <div class="post-comments-index">
        <%= render "public/post_comments/index", post: @post %>
       </div>
+    </div>
+    <div class="col-12 text-center">
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>

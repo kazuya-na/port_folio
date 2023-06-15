@@ -1,25 +1,36 @@
 <%= alert %><%= notice %>
 <div class="container p-5">
   <div class="row">
-    <div class="col">
-      <h1><%= @chat_room.title %></h1>
+    <div class="col-12 text-center">
+      <h1 class="pb-4"><%= @chat_room.title %></h1>
     </div>
-    <div class="col">
-      <% @chat_messages.each do |chat_message| %>
-        <%= link_to(chat_message.end_user) do %>
-          <%= image_tag chat_message.end_user.get_profile_image, size:'40x40' %>
-          <%= chat_message.end_user.nick_name %>
-        <% end %>
-        <%= chat_message.body %>
-        <% if chat_message.end_user == current_end_user %>
-          <%= link_to 'Destroy', chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
+    <div class="col-4">
       <%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %>
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <tbody>
+          <% @chat_messages.each do |chat_message| %>
+            <tr>
+              <td>
+                <%= link_to(chat_message.end_user) do %>
+                  <%= image_tag chat_message.end_user.get_profile_image, size:'40x40' %>
+                  <%= chat_message.end_user.nick_name %>
+                <% end %>
+              </td>
+              <td>
+                <%= chat_message.created_at %><br>
+                <%= chat_message.body %>
+              </td>
+              <td>
+                <% if chat_message.end_user == current_end_user %>
+                  <%= link_to 'Destroy', chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

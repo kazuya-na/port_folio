@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
+    get "search" => "searches#search"
 
     get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
     patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'

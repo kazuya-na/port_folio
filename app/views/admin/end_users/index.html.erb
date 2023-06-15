@@ -1,2 +1,20 @@
-<h1>Admin::EndUsers#index</h1>
-<p>Find me in app/views/admin/end_users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table>
+        <thead>
+          <th>会員氏名</th>
+        </thead>
+        <tbody>
+          <% @end_users.each do |end_user| %>
+            <tr>
+              <td>
+                <%= link_to end_user.nick_name, admin_end_user_path(end_user) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

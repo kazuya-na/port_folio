@@ -2,6 +2,7 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-8 mx-auto">
+      <%= render 'public/searches/search', range: @range %>
       <h1>投稿一覧</h1>
       <%= link_to '新規投稿', new_post_path, class:'btn btn-primary' %>
     </div>
@@ -19,7 +20,7 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= link_to post.title, post_path(post.id) %></td>
-          <td><%= post.body %></td>
+          <td><%= post.body.truncate(24, omission: '...') %></td>
           <td><%= post.end_user.nick_name %></td>
           <td class=<%= "favorite-#{post.id}" %> >
            <%= render "public/favorites/favorite-btn", post: post %>
