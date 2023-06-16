@@ -40,6 +40,13 @@ class EndUser < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  def self.guest
+    find_or_create_by!(nick_name: 'guestuser' ,email: 'guest@example.com') do |end_user|
+      end_user.password = SecureRandom.urlsafe_base64
+      end_user.nick_name = "guestuser"
+    end
+  end
+
   def self.looks(search, word)
     if search == "perfect_match"
       @end_user = EndUser.where("nick_name LIKE?", "#{word}")

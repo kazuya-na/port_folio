@@ -1,3 +1,4 @@
+<%= alert %>
 <div class="container p-5">
   <div class="row">
     <div class="col-8 mx-auto text-center">
@@ -9,12 +10,19 @@
       </p>
     </div>
     <div class="btn-wrapper col-6 mx-auto">
-      <div class="row">
-        <%= link_to 'Log in',new_end_user_session_path, class: "btn btn-outline-info btn-sm btn-block mb-3 sign_in" %>
-      </div>
-      <div class="row">
-        <%= link_to 'Sign Up',new_end_user_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
-      </div>
+      <% if end_user_signed_in? %>
+        <h1>ようこそ、運動日誌へ！！</h1>
+      <% else %>
+        <div class="row">
+          <%= link_to 'ゲストログイン(閲覧用)', end_users_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+        </div>
+        <div class="row">
+          <%= link_to 'Log in',new_end_user_session_path, class: "btn btn-outline-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to 'Sign Up',new_end_user_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

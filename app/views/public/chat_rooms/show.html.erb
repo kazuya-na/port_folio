@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-12 text-center">
       <h1 class="pb-4"><%= @chat_room.title %></h1>
+      <h4 class="pb-4"><%= @chat_room.introduction %></h4>
     </div>
     <div class="col-4">
       <%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %>
@@ -24,7 +25,9 @@
               </td>
               <td>
                 <% if chat_message.end_user == current_end_user %>
-                  <%= link_to 'Destroy', chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
+                  <%= link_to chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+                    <i class="fa-solid fa-trash-can"></i> 削除
+                  <% end %>
                 <% end %>
               </td>
             </tr>

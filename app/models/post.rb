@@ -5,8 +5,10 @@ class Post < ApplicationRecord
 
   has_many :favorited_users, through: :fovorites, source: :end_user
 
+  has_one_attached :profile_image
+
   def favorited_by?(end_user)
-    favorites.where(end_user_id: end_user.id).exists?
+    favorites.where(end_user_id: end_user).exists?
   end
 
   def self.looks(search, word)

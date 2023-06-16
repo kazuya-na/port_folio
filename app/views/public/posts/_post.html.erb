@@ -1,0 +1,13 @@
+<tbody>
+  <tr>
+    <td>
+      <%= link_to(post.end_user) do %>
+        <%= image_tag post.end_user.get_profile_image, size:'40x40' %><br>
+        <%= post.end_user.nick_name %>
+      <% end %>
+    </td>
+    <td><%= link_to post.title, post_path(post.id) %></td>
+    <td><%= post.body.truncate(24, omission: '...') %></td>
+    <td><i class="fa-solid fa-heart" style="color: #ff1f4b;"></i> <%= post.favorites.count %></td>
+  </tr>
+</tbody>

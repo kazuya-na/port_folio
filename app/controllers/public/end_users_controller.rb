@@ -1,4 +1,6 @@
 class Public::EndUsersController < ApplicationController
+  before_action :set_end_user, only: [:favorites]
+  before_action :ensure_guest_end_user, only: [:edit]
   def show
     @end_user = EndUser.find(params[:id])
   end
@@ -13,7 +15,7 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      redirect_to end_user_path(@end_user.id), notice: "You have updated user successfully."
+      redirect_to end_user_path(@end_user.id), notice: "内容を更新しました"
     else
       render :edit
     end
@@ -31,9 +33,25 @@ class Public::EndUsersController < ApplicationController
     redirect_to root_path
   end
 
+  def favorites
+    favorites = Favorite.where(end_user_id: @end_user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
+
   private
 
   def end_user_params
     params.require(:end_user).permit(:nick_name, :gender, :date_of_birth, :introduction, :is_deleted, :email, :encrypted_password, :profile_image)
+  end
+
+  def set_end_user
+    @end_user = EndUser.find(params[:id])
+  end
+
+  def ensure_guest_end_user
+    @end_user = EndUser.find(params[:id])
+    if @end_user.nick_name == "guestuser"
+      redirect_to root_path
+    end
   end
 end

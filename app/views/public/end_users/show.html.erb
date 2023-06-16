@@ -1,20 +1,29 @@
 <div class="container p-5">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <h1><%= @end_user.nick_name %>さんのプロフィール</h1>
-      <% if @end_user == current_end_user %>
-        <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-danger' %>
-        <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success' %>
-        <%= link_to '日誌', diaries_path, class: 'btn btn-info' %>
-      <% end %>
-      <% unless @end_user.id == current_end_user.id %>
-        <% if current_end_user.following?(@end_user) %>
-          <%= link_to "フォロー外す", end_user_relationships_path(@end_user.id), method: :delete, class: "btn btn-info" %>
-        <% else %>
-          <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "btn btn-success" %>
-        <% end %>
-      <% end %>
     </div>
+    <% if @end_user.nick_name != "guestuser" %>
+      <div class="col-12 d-flex justify-content-end">
+        <% if @end_user == current_end_user %>
+          <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-danger m-1' %>
+          <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success m-1' %>
+          <%= link_to '日誌', diaries_path, class: 'btn btn-info m-1' %>
+          <%= link_to favorites_end_user_path(@end_user), class: 'btn btn-outline-dark m-1' do %>
+            <i class="fa-solid fa-heart" style="color: #ff1f4b;"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-12">
+        <% unless @end_user.id == current_end_user.id %>
+          <% if current_end_user.following?(@end_user) %>
+            <%= link_to "フォロー外す", end_user_relationships_path(@end_user.id), method: :delete, class: "btn btn-info" %>
+          <% else %>
+            <%= link_to "フォローする", end_user_relationships_path(@end_user.id), method: :post, class: "btn btn-success" %>
+          <% end %>
+        <% end %>
+        </div>
+      <% end %>
     <div class="col">
       <%= render 'info', end_user: @end_user %>
     </div>

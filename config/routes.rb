@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  devise_scope :end_user do
+    post 'end_users/guest_sign_in', to: 'end_users/sessions#guest_sign_in'
+  end
 
 
   namespace :admin do
@@ -25,6 +28,9 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      member do
+        get :favorites
+      end
     end
 
     resources :posts, only: [:new, :create, :index, :show, :destroy] do
