@@ -1,5 +1,7 @@
-<%= form_with(model: [chat_room, chat_message], local: false) do |f| %>
-  <%= f.hidden_field :chat_room_id, value: @chat_room.id %>
-  <%= f.text_area :body,size: '35x5' %><br>
-  <%= f.submit '送信する', class: 'btn btn-primary' %>
+<% if current_end_user.nick_name != "guestuser" %>
+  <%= form_with(model: [chat_room, chat_message], local: false) do |f| %>
+    <%= f.hidden_field :chat_room_id, value: @chat_room.id %>
+    <%= f.text_area :body,size: '35x5' %><br>
+    <%= f.submit '送信する', class: 'btn btn-primary' %>
+  <% end %>
 <% end %>

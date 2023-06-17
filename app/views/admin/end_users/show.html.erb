@@ -3,7 +3,7 @@
     <div class="col-12">
       <h1><%= @end_user.nick_name %>さんのプロフィール</h1>
       <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-danger' %>
-      <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success' %>
+      <%= link_to '編集', edit_admin_end_user_path(@end_user), class: 'btn btn-success' %>
       <%= link_to '日誌', diaries_path, class: 'btn btn-info' %>
     </div>
     <div class="col">

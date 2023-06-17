@@ -9,7 +9,7 @@
     <% if end_user.nick_name != "guestuser" %>
       <tr>
         <td>
-          <%= image_tag end_user.get_profile_image, size:'50x50' %>
+          <%= image_tag end_user.get_profile_image, size:'50x50' %><br>
           <%= end_user.nick_name %>
           <%= link_to end_user_followers_path(end_user) do %>
             フォロー数：<%= end_user.followings.count %>
@@ -17,8 +17,6 @@
           <%= link_to end_user_followings_path(end_user) do %>
             フォロワー数：<%= end_user.followers.count %>
           <% end %>
-
-
         </td>
         <td><%= end_user.email %></td>
         <td><%= end_user.gender_i18n %></td>
