@@ -7,17 +7,17 @@
       <h5><%= flash[:notice] %></h5>
     </div>
     <div class="col-12 text-center">
-      <h1>投稿一覧</h1>
+      <h1><strong>投稿一覧</strong></h1>
       <%= render 'public/searches/search', range: @range %>
     </div>
-    <div class="col">
+    <div class="col-12 text-right">
       <% if current_end_user.nick_name != "guestuser" %>
-        <%= link_to '新規投稿', new_post_path, class:'btn btn-primary' %>
+        <%= link_to '新規投稿', new_post_path, class:'btn btn-primary mb-2' %>
       <% end %>
     </div>
   </div>
-  <table class='table'>
-    <thead>
+  <table class='table border border-dark'>
+    <thead class="bg-dark text-light">
       <tr>
         <th>タイトル</th>
         <th>本文</th>
@@ -28,13 +28,13 @@
     <tbody>
       <% @posts.each do |post| %>
         <tr>
-          <td><%= link_to post.title, post_path(post.id) %></td>
-          <td><%= post.body.truncate(24, omission: '...') %></td>
-          <td><%= post.end_user.nick_name %></td>
-          <td class=<%= "favorite-#{post.id}" %> >
+          <td class="border-dark"><%= link_to post.title, post_path(post.id) %></td>
+          <td class="border-dark"><%= post.body.truncate(24, omission: '...') %></td>
+          <td class="border-dark"><%= post.end_user.nick_name %></td>
+          <td class="border-dark"<%= "favorite-#{post.id}" %> >
            <%= render "public/favorites/favorite-btn", post: post %>
           </td>
-          <td>
+          <td class="border-dark">
             <% if post.end_user == current_end_user %>
               <%= link_to post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
                 <i class="fa-solid fa-trash-can"></i> 削除
