@@ -1,5 +1,11 @@
 <div class="container p-5">
   <div class="row">
+    <div class="col-12 text-danger">
+      <h5><%= flash[:alert] %></h5>
+    </div>
+    <div class="col-12 text-success">
+      <h5><%= flash[:notice] %></h5>
+    </div>
     <div class="col-12 text-center">
       <h1>投稿一覧</h1>
       <%= render 'public/searches/search', range: @range %>

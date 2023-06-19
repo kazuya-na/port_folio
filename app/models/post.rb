@@ -7,6 +7,9 @@ class Post < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :title, presence:true, length: { minimum:2, maximum:15 }
+  validates :body, presence:true, length:{maximum:200}
+
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user).exists?
   end

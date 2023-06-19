@@ -7,10 +7,11 @@ class Public::ChatRoomsController < ApplicationController
     @chat_room = ChatRoom.new(chat_room_params)
     @chat_room.end_user_id = current_end_user.id
     if @chat_room.save
-       redirect_to chat_room_path(@chat_room), notice: "You have created book successfully."
+       flash[:notice] = 'チャットルームの作成に成功しました。'
+       redirect_to chat_room_path(@chat_room)
     else
       @chat_rooms = ChatRoom.all
-      render 'index'
+      render 'new'
     end
   end
 

@@ -1,6 +1,8 @@
-<%= alert %><%= notice %>
 <div class="container p-5">
   <div class="row">
+    <div class="col text-success">
+      <h5><%= flash[:notice] %></h5>
+    </div>
     <div class="col-12 text-center">
       <h1 class="pb-4"><%= @chat_room.title %></h1>
       <h4 class="pb-4"><%= @chat_room.introduction %></h4>

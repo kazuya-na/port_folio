@@ -8,7 +8,8 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.end_user_id = current_end_user.id
     if @post.save
-       redirect_to posts_path, notice: "You have created book successfully."
+       flash[:notice] = '投稿しました。'
+       redirect_to posts_path
     else
       @posts = Post.all
       render 'new'
@@ -30,7 +31,7 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    flash[:notice] = '投稿を削除しました。'
+    flash[:alert] = '投稿を削除しました。'
     redirect_to request.referer
   end
 

@@ -1,5 +1,6 @@
 <% if current_end_user.nick_name != "guestuser" %>
  <%= form_with(model: [post, post_comment], local: false) do |f| %>
+  <%= render "public/shared/error_messages", resource: post %>
   <%= f.text_area :body, size: '100x5' %><br>
   <%= f.submit "コメントする", class: 'btn btn-secondary' %>
  <% end %>

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope == :admin
       new_admin_session_path
     else
-      homes_about_path
+      root_path
     end
   end
 end
