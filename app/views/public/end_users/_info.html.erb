@@ -1,24 +1,28 @@
 <table class="table">
   <thead>
+    <th>アイコン</th>
     <th>ニックネーム</th>
-    <th>メールアドレス</th>
     <th>性別</th>
     <th>生年月日(年齢)</th>
+    <th></th>
   </thead>
-  <tbody>
-    <% if end_user.nick_name != "guestuser" %>
+  <% if end_user.nick_name != "guestuser" %>
+    <tbody>
       <tr>
-        <td>
+        <td width="200">
           <%= image_tag end_user.get_profile_image, size:'50x50' %><br>
-          <%= end_user.nick_name %>
           <%= link_to end_user_followers_path(end_user) do %>
             フォロー数：<%= end_user.followings.count %>
-          <% end %>
+          <% end %><br>
           <%= link_to end_user_followings_path(end_user) do %>
             フォロワー数：<%= end_user.followers.count %>
           <% end %>
         </td>
-        <td><%= end_user.email %></td>
+        <td>
+          <h4>
+            <%= end_user.nick_name %>
+          </h4>
+        </td>
         <td><%= end_user.gender_i18n %></td>
         <td>
           <div class='row'>
@@ -26,9 +30,17 @@
           </div>
         </td>
       </tr>
-
       <tr>
-        <td>自己紹介：<%= end_user.introduction %></td>
+        <td>
+          <h4>自己紹介：<%= end_user.introduction %></h4>
+        </td>
+        <td></td>
+        <td></td>
+        <td class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <% if @end_user == current_end_user %>
+            <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-danger m-1' %>
+          <% end %>
+        </td>
       </tr>
     <% else %>
       <tr>
