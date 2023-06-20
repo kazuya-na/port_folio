@@ -7,19 +7,20 @@
       <h5><%= flash[:notice] %></h5>
     </div>
     <div class="btn-wrapper col-8 mx-auto text-center">
-      <% if end_user_signed_in? %>
-        <%= render 'public/searches/search', range: @range %>
-        <h1 class="p-4"><strong>ようこそ、運動日誌へ！！</strong></h1>
-        <h5>
-          運動の継続を目指し、日々の運動を記録していきましょう！<br>
-          また、投稿機能を使って発言したり、チャット機能を使って<br>
-          他のユーザーとの交流もしてみましょう！
-        </h5>
-        <%= image_tag 'memo.jpg', size: '450x300' %><br>
-        <%= image_tag 'arrow.png', size: '250x300' %>
-        <h5>日々の運動を記録することで運動意欲を向上させましょう！</h5>
-        <%= image_tag 'walking.jpg', size: '450x300' %>
-      <% else %>
+      <div class="box fadeInUpTrigger">
+        <% if end_user_signed_in? %>
+          <%= render 'public/searches/search', range: @range %>
+          <h1 class="p-4"><strong>ようこそ、運動日誌へ！！</strong></h1>
+          <h5>
+            運動の継続を目指し、日々の運動を記録していきましょう！<br>
+            また、投稿機能を使って発言したり、チャット機能を使って<br>
+            他のユーザーとの交流もしてみましょう！
+          </h5>
+          <%= image_tag 'memo.jpg', size: '450x300' %><br>
+          <%= image_tag 'arrow.png', size: '250x300' %>
+          <h5>日々の運動を記録することで運動意欲を向上させましょう！</h5>
+          <%= image_tag 'walking.jpg', size: '450x300' %>
+        <% else %>
           <h1><strong>60代向けSNS 運動日誌</strong></h1>
           <p>
             運動不足になりがちな退職後の60代に向けての運動記録サイトです。<br>
@@ -32,7 +33,8 @@
           <%= link_to 'ゲストログイン(閲覧用)', end_users_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
           <%= link_to 'Log in',new_end_user_session_path, class: "btn btn-outline-info btn-sm btn-block mb-3 sign_in" %>
           <%= link_to 'Sign Up',new_end_user_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
