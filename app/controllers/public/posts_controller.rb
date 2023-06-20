@@ -17,8 +17,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.new
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end
 
   def show

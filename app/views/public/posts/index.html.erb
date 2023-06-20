@@ -11,9 +11,9 @@
       <%= render 'public/searches/search', range: @range %>
     </div>
     <div class="col-12 text-right">
-      <% if current_end_user.nick_name != "guestuser" %>
-        <%= link_to '新規投稿', new_post_path, class:'btn btn-primary mb-2' %>
-      <% end %>
+        <% if current_end_user.nick_name != "guestuser" %>
+          <%= link_to '新規投稿', new_post_path, class:'btn btn-primary mb-2' %>
+        <% end %>
     </div>
   </div>
   <table class='table border border-dark'>

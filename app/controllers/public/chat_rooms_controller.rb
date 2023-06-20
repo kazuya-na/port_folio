@@ -16,7 +16,7 @@ class Public::ChatRoomsController < ApplicationController
   end
 
   def index
-    @chat_rooms = ChatRoom.all
+    @chat_rooms = ChatRoom.page(params[:page])
   end
 
   def show
