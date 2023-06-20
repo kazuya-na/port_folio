@@ -7,13 +7,13 @@
       <h5><%= flash[:notice] %></h5>
     </div>
     <div class="col-12 text-center">
-      <h1><strong>投稿一覧</strong></h1>
       <%= render 'public/searches/search', range: @range %>
+      <h1 class="pt-4"><strong>投稿一覧</strong></h1>
     </div>
     <div class="col-12 text-right">
-        <% if current_end_user.nick_name != "guestuser" %>
-          <%= link_to '新規投稿', new_post_path, class:'btn btn-primary mb-2' %>
-        <% end %>
+      <% if current_end_user.nick_name != "guestuser" %>
+        <%= link_to '新規投稿', new_post_path, class:'btn btn-primary mb-2' %>
+      <% end %>
     </div>
   </div>
   <table class='table border border-dark'>
@@ -45,4 +45,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @posts %>
 </div>

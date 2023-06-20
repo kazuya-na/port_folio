@@ -5,14 +5,16 @@
     <td></td>
     <td>
      <%= link_to(post_comment.end_user) do %>
-      <%= image_tag post_comment.end_user.get_profile_image, size:'40x40' %>
+      <%= image_tag post_comment.end_user.get_profile_image, size:'40x40' %><br>
       <%= post_comment.end_user.nick_name %>
      <% end %>
     </td>
     <td><%= post_comment.body %></td>
     <td>
      <% if post_comment.end_user == current_end_user %>
-      <%= link_to 'Destroy', post_post_comment_path(post,post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", remote: true %>
+      <%= link_to post_post_comment_path(post,post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+       <i class="fa-solid fa-trash-can"></i> 削除
+      <% end %>
      <% end %>
     </td>
    </tr>

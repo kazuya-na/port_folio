@@ -17,7 +17,7 @@
             <tr>
               <td>
                 <%= link_to(chat_message.end_user) do %>
-                  <%= image_tag chat_message.end_user.get_profile_image, size:'40x40' %>
+                  <%= image_tag chat_message.end_user.get_profile_image, size:'40x40' %><br>
                   <%= chat_message.end_user.nick_name %>
                 <% end %>
               </td>

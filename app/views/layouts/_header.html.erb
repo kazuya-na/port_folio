@@ -21,6 +21,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to end_users_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+              <i class="fa-solid fa-pen-to-square"></i> 会員一覧
+            <% end %>
+          </li>
+          <li>
             <%= link_to end_user_path(current_end_user), class:'nav-link text-light btn btn-dark ml-2' do %>
               <i class="fa-solid fa-user"></i> プロフィール
             <% end %>
@@ -32,13 +37,13 @@
           </li>
         <% else %>
           <li>
-            <%= link_to homes_about_path, class:'nav-link text-light btn btn-dark ml-2' do %>
-              <i class="fas fa-link"></i> About
+            <%=  link_to root_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+              <i class="fa-solid fa-house"></i> Top
             <% end %>
           </li>
           <li>
-            <%=  link_to posts_path, class:'nav-link text-light btn btn-dark ml-2' do %>
-              <i class="fa-solid fa-pen-to-square"></i> 投稿一覧
+            <%= link_to homes_about_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+              <i class="fas fa-link"></i> About
             <% end %>
           </li>
           <li>

@@ -1,5 +1,5 @@
 <h5 class="bg-danger text-center p-3 m-4" style="color: #fff700; border-radius: 10px;">
-  <i class="fa-solid fa-triangle-exclamation" style="color: #fff700;"></i>注意！具合が悪くなったり、痛みがある時は運動を中止しましょう。無理なく運動を継続させましょう！
+  <i class="fa-solid fa-triangle-exclamation" style="color: #fff700;"></i> 注意！具合が悪くなったり、痛みがある時は運動を中止しましょう。無理なく運動を継続させましょう！
 </h5>
 <div class="container pt-2 pb-5">
   <div class="row">
@@ -8,7 +8,7 @@
     </div>
     <div class="btn-wrapper col-8 mx-auto text-center">
       <% if end_user_signed_in? %>
-        <h5><strong>キーワード検索</strong></h5><%= render 'public/searches/search', range: @range %>
+        <%= render 'public/searches/search', range: @range %>
         <h1 class="p-4"><strong>ようこそ、運動日誌へ！！</strong></h1>
         <h5>
           運動の継続を目指し、日々の運動を記録していきましょう！<br>

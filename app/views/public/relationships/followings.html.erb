@@ -1,7 +1,27 @@
 <div class="container">
  <div class="row">
   <div class="col">
-   <h1>フォロワー</h1>
+   <h1>フォロー一覧</h1>
+   <% if @end_users.exists? %>
+     <% @end_users.each do |end_user| %>
+       <table>
+         <thead>
+           <tr>
+             <th>ユーザー</th>
+             <th></th>
+             <th></th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td><%= end_user.nick_name %></td>
+           </tr>
+         </tbody>
+       </table>
+     <% end %>
+   <% else %>
+     <p>ユーザーはいません</p>
+   <% end %>
   </div>
  </div>
 </div>
