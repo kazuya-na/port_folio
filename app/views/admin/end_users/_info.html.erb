@@ -26,9 +26,9 @@
       <td class="border-dark" width="600"><%= end_user.introduction %></td>
       <td class="border-dark" width="80">
         <% if @end_user.is_deleted %>
-          退会
+          <p class="text-danger">退会</p>
         <% else %>
-          有効
+          <p class="text-success">有効</p>
         <% end %>
       </td>
     </tr>

@@ -15,16 +15,19 @@
             <% if end_user.nick_name != "guestuser" %>
               <tr>
                 <td class="border-dark" width="150">
-                  <%= link_to end_user.nick_name, admin_end_user_path(end_user) %>
+                  <%= link_to admin_end_user_path(end_user) do %>
+                    <%= image_tag end_user.get_profile_image, size:'50x50' %>
+                    <%= end_user.nick_name %>
+                  <% end %>
                 </td>
                 <td class="border-dark" width="600">
                   <%= end_user.introduction %>
                 </td>
                 <td class="border-dark text-center" width="150">
                   <% if end_user.is_deleted %>
-                    退会
+                    <p class="text-danger">退会</p>
                   <% else %>
-                    有効
+                    <p class="text-success">有効</p>
                   <% end %>
                 </td>
               </tr>

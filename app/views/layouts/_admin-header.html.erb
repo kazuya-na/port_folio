@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-body border-bottom border-dark">
     <div class="container">
-      <a class="navbar-brand text-dark m-2" href="/"><h1>管理者ページ</h1></a>
+      <a class="navbar-brand text-dark m-2" href="/admin/homes/top"><h1>管理者ページ</h1></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,10 +9,24 @@
         <ul class="navbar-nav ml-auto">
         <% if admin_signed_in? %>
           <li>
-            <%= link_to '会員一覧', admin_end_users_path, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%= link_to root_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+              <i class="fa-solid fa-house-user"></i> 会員Home
+            <% end %>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%= link_to admin_homes_top_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+              <i class="fa-solid fa-house"></i> Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_end_users_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+              <i class="fa-solid fa-users"></i> 会員一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete, class:'nav-link text-light btn btn-dark ml-2' do %>
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+            <% end %>
           </li>
         <% end %>
         </ul>

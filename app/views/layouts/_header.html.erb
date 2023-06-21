@@ -12,7 +12,7 @@
         <% if end_user_signed_in? %>
           <li>
             <%= link_to chat_rooms_path, class:'nav-link text-light btn btn-dark ml-5' do %>
-              <i class="fa-regular fa-comment-dots"></i> チャット
+              <i class="fa-regular fa-comments"></i> チャット
             <% end %>
           </li>
           <li>
@@ -38,7 +38,7 @@
         <% else %>
           <li>
             <%=  link_to root_path, class:'nav-link text-light btn btn-dark ml-2' do %>
-              <i class="fa-solid fa-house"></i> Top
+              <i class="fa-solid fa-house"></i> Home
             <% end %>
           </li>
           <li>
