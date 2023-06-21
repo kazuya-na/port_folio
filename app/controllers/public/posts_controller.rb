@@ -17,8 +17,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.new
-    @posts = Post.all
+    @posts = Post.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page])
   end
 
   def show

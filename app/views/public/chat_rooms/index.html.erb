@@ -1,7 +1,7 @@
 <div class="container p-5">
   <div class="row">
     <div class="col text-danger">
-      <h5><%= flash[:notice] %></h5>
+      <h5><%= flash[:alert] %></h5>
     </div>
     <div class="col-12 text-center">
       <h1><strong>チャットルーム一覧</strong></h1>
@@ -21,6 +21,7 @@
         </thead>
         <tbody>
           <% @chat_rooms.each do |chat_room| %>
+          <% if current_end_user == chat_room.end_user || (current_end_user.following?(chat_room.end_user) && chat_room.end_user.following?(current_end_user)) %>
             <tr>
               <td class="border-dark">
                 <%= link_to(chat_room) do %>
@@ -38,8 +39,10 @@
               </td>
             </tr>
           <% end %>
+          <% end %>
         </tbody>
       </table>
+      <%= paginate @chat_rooms %>
     </div>
   </div>
 </div>

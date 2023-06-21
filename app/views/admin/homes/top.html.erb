@@ -1,8 +1,23 @@
-<div class="container">
+<h5 class="bg-danger text-center p-3 m-4" style="color: #fff700; border-radius: 10px;">
+  <i class="fa-solid fa-triangle-exclamation" style="color: #fff700;"></i> 注意！具合が悪くなったり、痛みがある時は運動を中止しましょう。無理なく運動を継続させましょう！
+</h5>
+<div class="container pt-2 pb-5">
   <div class="row">
-    <div class="col">
-      <h1>管理者ログイン画面</h1>
-      <%= link_to 'ログイン', new_admin_session_path %>
+    <div class="col-12 text-success">
+      <h5><%= flash[:notice] %></h5>
+    </div>
+    <div class="btn-wrapper col-8 mx-auto text-center">
+          <%= render 'public/searches/search', range: @range %>
+          <h1 class="p-4"><strong>ようこそ、運動日誌へ！！</strong></h1>
+          <h5>
+            運動の継続を目指し、日々の運動を記録していきましょう！<br>
+            また、投稿機能を使って発言したり、チャット機能を使って<br>
+            他のユーザーとの交流もしてみましょう！
+          </h5>
+          <%= image_tag 'memo.jpg', size: '450x300' %><br>
+          <%= image_tag 'arrow.png', size: '250x300' %>
+          <h5>日々の運動を記録することで運動意欲を向上させましょう！</h5>
+          <%= image_tag 'walking.jpg', size: '450x300' %>
     </div>
   </div>
 </div>

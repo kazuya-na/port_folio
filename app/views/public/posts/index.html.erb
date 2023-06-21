@@ -7,8 +7,8 @@
       <h5><%= flash[:notice] %></h5>
     </div>
     <div class="col-12 text-center">
-      <h1><strong>投稿一覧</strong></h1>
       <%= render 'public/searches/search', range: @range %>
+      <h1 class="pt-4"><strong>投稿一覧</strong></h1>
     </div>
     <div class="col-12 text-right">
       <% if current_end_user.nick_name != "guestuser" %>
@@ -45,4 +45,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @posts %>
 </div>

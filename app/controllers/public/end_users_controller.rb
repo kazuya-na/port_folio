@@ -1,6 +1,11 @@
 class Public::EndUsersController < ApplicationController
   before_action :set_end_user, only: [:favorites]
   before_action :ensure_guest_end_user, only: [:edit]
+
+  def index
+    @end_users = EndUser.page(params[:page])
+  end
+
   def show
     @end_user = EndUser.find(params[:id])
   end
@@ -15,7 +20,7 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      flash[:alert] = "内容を更新しました"
+      flash[:notice] = "内容を更新しました"
       redirect_to end_user_path(@end_user.id)
     else
       render :edit
