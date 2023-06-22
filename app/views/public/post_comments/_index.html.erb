@@ -1,8 +1,7 @@
-<table class="table">
+<table class="table m-5">
  <tbody>
   <% post.post_comments.each do |post_comment| %>
    <tr>
-    <td></td>
     <td>
      <%= link_to(post_comment.end_user) do %>
       <%= image_tag post_comment.end_user.get_profile_image, size:'40x40' %><br>

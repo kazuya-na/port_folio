@@ -1,8 +1,8 @@
 class Public::RoomUsersController < ApplicationController
-  def index
+  def create
   end
-
-  def show
+  
+  def destroy
   end
 
   private

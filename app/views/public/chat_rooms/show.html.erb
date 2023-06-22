@@ -1,4 +1,7 @@
-<div class="container p-5">
+<%= link_to chat_rooms_path, class: 'btn btn-outline-success mt-2 ml-4' do %>
+  <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+<% end %>
+<div class="container pb-5">
   <div class="row">
     <div class="col text-success">
       <h5><%= flash[:notice] %></h5>
@@ -24,17 +27,12 @@
                   <%= chat_message.end_user.nick_name %>
                 <% end %>
               </td>
-              <td>
+              <td width="500">
                 <%= chat_message.created_at %><br>
                 <%= chat_message.body %>
               </td>
               <td>
                 <% if chat_message.end_user == current_end_user %>
-                  <%= link_to chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
-                    <i class="fa-solid fa-trash-can"></i> 削除
-                  <% end %>
-                <% end %>
-                <% if current_end_user.nick_name == "test@nick_name_admin" %>
                   <%= link_to chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
                     <i class="fa-solid fa-trash-can"></i> 削除
                   <% end %>

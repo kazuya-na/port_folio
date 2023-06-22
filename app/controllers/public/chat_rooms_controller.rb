@@ -18,7 +18,7 @@ class Public::ChatRoomsController < ApplicationController
 
   def index
 
-    @chat_rooms = ChatRoom.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page])
+    @chat_rooms = ChatRoom.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page]).order(created_at: :desc)
   end
 
   def show
