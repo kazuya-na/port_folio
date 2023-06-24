@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @end_user = EndUser.find(@post.end_user.id)
     @post_comment = PostComment.new
-    @post_comments = @post.post_comments.all.order(created_at: :desc)
+    @post_comments = @post.post_comments.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page]).order(created_at: :desc)
   end
 
   def destroy

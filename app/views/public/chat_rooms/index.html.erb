@@ -21,24 +21,24 @@
         </thead>
         <tbody style="background-color: #ffffff;">
           <% @chat_rooms.each do |chat_room| %>
-          <% if current_end_user == chat_room.end_user || (current_end_user.following?(chat_room.end_user) && chat_room.end_user.following?(current_end_user)) %>
-            <tr>
-              <td class="border-dark">
-                <%= link_to(chat_room) do %>
-                  <%= chat_room.title %>
-                <% end %>
-              </td>
-              <td class="border-dark"><%= chat_room.introduction.truncate(24, omission: '...') %></td>
-              <td class="border-dark"><%= chat_room.end_user.nick_name %></td>
-              <td class="border-dark">
-                <% if chat_room.end_user == current_end_user %>
-                  <%= link_to chat_room_path(chat_room), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
-                    <i class="fa-solid fa-trash-can"></i> 削除
+            <% if current_end_user == chat_room.end_user || (current_end_user.following?(chat_room.end_user) && chat_room.end_user.following?(current_end_user)) %>
+              <tr>
+                <td class="border-dark">
+                  <%= link_to(chat_room) do %>
+                    <%= chat_room.title %>
                   <% end %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+                </td>
+                <td class="border-dark"><%= chat_room.introduction.truncate(24, omission: '...') %></td>
+                <td class="border-dark"><%= chat_room.end_user.nick_name %></td>
+                <td class="border-dark">
+                  <% if chat_room.end_user == current_end_user %>
+                    <%= link_to chat_room_path(chat_room), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+                      <i class="fa-solid fa-trash-can"></i> 削除
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>

@@ -1,4 +1,6 @@
 class Public::ChatRoomsController < ApplicationController
+  before_action :authenticate_end_user!
+  before_action :correct_chat_room, only: [:show]
 
   def new
     @chat_room = ChatRoom.new
@@ -17,13 +19,12 @@ class Public::ChatRoomsController < ApplicationController
   end
 
   def index
-
     @chat_rooms = ChatRoom.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page]).order(created_at: :desc)
   end
 
   def show
-    @chat_message = ChatMessage.new
     @chat_room = ChatRoom.find(params[:id])
+    @chat_message = ChatMessage.new
     @chat_messages = ChatMessage.where(chat_room: @chat_room).order(created_at: :desc)
   end
 
@@ -32,6 +33,13 @@ class Public::ChatRoomsController < ApplicationController
     chat_room.destroy
     flash[:alert] = 'チャットルームを削除しました。'
     redirect_to request.referer
+  end
+
+  def correct_chat_room
+    @chat_room = ChatRoom.find(params[:id])
+    unless @chat_room.end_user.id == current_end_user.id
+      redirect_to chat_rooms_path
+    end
   end
 
   private

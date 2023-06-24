@@ -1,9 +1,10 @@
 class Public::EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :set_end_user, only: [:favorites]
   before_action :ensure_guest_end_user, only: [:edit]
 
   def index
-    @end_users = EndUser.page(params[:page]).order(created_at: :desc)
+    @end_users = EndUser.where(end_users: { is_deleted: false }).page(params[:page]).order(created_at: :desc)
   end
 
   def show
