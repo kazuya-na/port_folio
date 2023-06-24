@@ -22,13 +22,13 @@
             フォロワー数：<%= end_user.followers.count %>
           <% end %>
         </td>
-        <td class="border-dark" width="80"><%= end_user.gender_i18n %></td>
+        <td class="border-dark" width="100"><%= end_user.gender_i18n %></td>
         <td class="border-dark" width="200">
           <div class='row'>
             <%= "#{end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %>
           </div>
         </td>
-        <td class="border-dark" width="500"><%= end_user.introduction %></td>
+        <td class="border-dark" width="400"><%= end_user.introduction %></td>
         <td class="border-dark text-center" width="200">
           <% unless end_user.id == current_end_user.id %>
             <% if current_end_user.following?(end_user) %>
