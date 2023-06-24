@@ -8,7 +8,7 @@
     <th colspan="6"></th>
   </thead>
   <% if end_user.nick_name != "guestuser" %>
-    <tbody>
+    <tbody style="background-color: #ffffff;">
       <tr>
         <td class="border-dark" width="100">
           <%= image_tag end_user.get_profile_image, size:'70x70' %>
@@ -43,25 +43,24 @@
         </td>
     <% else %>
       <tr>
-        <td>xxxx@example.com</td>
         <td>
           <%= image_tag end_user.get_profile_image, size:'40x40' %>
-          <%= end_user.nick_name %>
+        </td>
+        <td>
+          <strong><%= end_user.nick_name %></strong><br>
+          xxxx@example.com
         </td>
         <td>未登録</td>
         <td>xx年xx月xx日(xx)</td>
-      </tr>
-      <tr>
-        <td>
-          <strong>自己紹介：</strong>
-        </td>
         <td>新規登録するとここに自己紹介文が書き込めます。</td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <div class="border-dark d-grid gap-2 d-md-flex justify-content-md-end">
-  <% if @end_user == current_end_user %>
-    <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-sm btn-danger m-1' %>
+  <% if current_end_user.nick_name != "guestuser" %>
+    <% if @end_user == current_end_user %>
+      <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-sm btn-danger m-1' %>
+    <% end %>
   <% end %>
 </div>

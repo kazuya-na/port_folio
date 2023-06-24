@@ -18,13 +18,13 @@ class Public::ChatRoomsController < ApplicationController
 
   def index
 
-    @chat_rooms = ChatRoom.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page])
+    @chat_rooms = ChatRoom.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page]).order(created_at: :desc)
   end
 
   def show
     @chat_message = ChatMessage.new
     @chat_room = ChatRoom.find(params[:id])
-    @chat_messages = ChatMessage.where(chat_room: @chat_room)
+    @chat_messages = ChatMessage.where(chat_room: @chat_room).order(created_at: :desc)
   end
 
   def destroy

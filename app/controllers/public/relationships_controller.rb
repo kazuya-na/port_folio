@@ -17,6 +17,5 @@ class Public::RelationshipsController < ApplicationController
   def followers
     end_user = EndUser.find(params[:end_user_id])
     @end_users = end_user.followers
-    @end_user_followers = EndUser.all
   end
 end

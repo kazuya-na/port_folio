@@ -39,9 +39,9 @@ Rails.application.routes.draw do
     end
 
     resources :diaries, only: [:create, :index, :show, :edit, :update, :destroy]
-    resources :room_users, only: [:create, :destroy]
     resources :chat_rooms, only: [:new, :create, :index, :show, :destroy] do
       resources :chat_messages, only: [:create, :destroy]
+      resources :room_users, only: [:create, :destroy]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

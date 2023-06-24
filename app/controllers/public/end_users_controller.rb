@@ -3,11 +3,12 @@ class Public::EndUsersController < ApplicationController
   before_action :ensure_guest_end_user, only: [:edit]
 
   def index
-    @end_users = EndUser.page(params[:page])
+    @end_users = EndUser.page(params[:page]).order(created_at: :desc)
   end
 
   def show
     @end_user = EndUser.find(params[:id])
+    @posts = @end_user.posts.all
   end
 
   def edit
@@ -30,7 +31,6 @@ class Public::EndUsersController < ApplicationController
   def withdraw_confirm
   end
 
-
   def withdraw
     @user = current_end_user
     @user.update(is_deleted: true)
@@ -40,8 +40,9 @@ class Public::EndUsersController < ApplicationController
   end
 
   def favorites
+    @posts = Post.page(params[:page])
     favorites = Favorite.where(end_user_id: @end_user.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
+    @favorite_posts = Post.order(created_at: :desc).find(favorites)
   end
 
   private
