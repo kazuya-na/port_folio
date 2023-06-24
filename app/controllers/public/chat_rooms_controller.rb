@@ -24,7 +24,7 @@ class Public::ChatRoomsController < ApplicationController
   def show
     @chat_message = ChatMessage.new
     @chat_room = ChatRoom.find(params[:id])
-    @chat_messages = ChatMessage.where(chat_room: @chat_room)
+    @chat_messages = ChatMessage.where(chat_room: @chat_room).order(created_at: :desc)
   end
 
   def destroy

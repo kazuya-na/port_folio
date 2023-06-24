@@ -1,7 +1,7 @@
 <%= link_to posts_path, class: 'btn btn-outline-primary mt-2 ml-4' do %>
   <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
 <% end %>
-<div class="container p-5">
+<div class="container pb-5">
   <div class="row">
     <div class="col-12 text-danger">
       <h5><%= flash[:alert] %></h5>
@@ -18,7 +18,28 @@
       <h5 class="pt-2"><%= render "public/post_comments/form", post: @post, post_comment: @post_comment %></h5>
     </div>
     <div class="col-7　post-comments-index">
-      <%= render "public/post_comments/index", post: @post %>
+      <table class="table m-5">
+        <tbody style="background-color: #ffffff;">
+          <% @post_comments.each do |post_comment| %>
+            <tr>
+              <td>
+                <%= link_to(post_comment.end_user) do %>
+                  <%= image_tag post_comment.end_user.get_profile_image, size:'40x40' %><br>
+                  <%= post_comment.end_user.nick_name %>
+                <% end %>
+              </td>
+              <td width='300'><%= post_comment.body %></td>
+              <td>
+                <% if post_comment.end_user == current_end_user %>
+                  <%= link_to post_post_comment_path(@post,post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+                    <i class="fa-solid fa-trash-can"></i> 削除
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

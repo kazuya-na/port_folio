@@ -6,17 +6,36 @@
     <div class="col-12">
       <h1 class="text-center"><strong><%= @end_user.nick_name %>さんのプロフィール</strong></h1>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <% if @end_user == current_end_user %>
-          <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success m-1' %>
-          <%= link_to '日誌', diaries_path, class: 'btn btn-info m-1' %>
-          <%= link_to favorites_end_user_path(@end_user), class: 'btn btn-outline-dark m-1' do %>
-            <i class="fa-solid fa-heart" style="color: #ff1f4b;"></i> いいね
+        <% if current_end_user.nick_name != "guestuser" %>
+          <% if @end_user == current_end_user %>
+            <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success m-1' %>
+            <%= link_to '日誌', diaries_path, class: 'btn btn-info m-1' %>
+            <%= link_to favorites_end_user_path(@end_user), class: 'btn btn-outline-dark m-1' do %>
+              <i class="fa-solid fa-heart" style="color: #ff1f4b;"></i> いいね
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
     <div class="col">
       <%= render 'info', end_user: @end_user %>
+      <% if @end_user.nick_name != "guestuser" %>
+        <h3 class="text-center pt-4"><%= @end_user.nick_name %>さんの投稿一覧</h3>
+        <table class="table border">
+          <thead style="background-color: #fffacd;">
+            <th>タイトル</th>
+            <th>内容</th>
+          </thead>
+          <tbody style="background-color: #ffffff;">
+            <% @posts.each do |post| %>
+              <tr>
+                <td><%= post.title %></td>
+                <td><%= post.body.truncate(24, omission: '...') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
