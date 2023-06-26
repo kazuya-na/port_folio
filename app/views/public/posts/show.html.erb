@@ -1,4 +1,4 @@
-<%= link_to posts_path, class: 'btn btn-outline-primary mt-2 ml-4' do %>
+<%= link_to posts_path, class: 'btn btn-outline-success mt-2 ml-4' do %>
   <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
 <% end %>
 <div class="container pb-5">
@@ -17,7 +17,7 @@
       <h4 class="border border-dark bg-light p-3"><%= @post.body %></h4>
       <h5 class="pt-2"><%= render "public/post_comments/form", post: @post, post_comment: @post_comment %></h5>
     </div>
-    <div class="col-7　post-comments-index">
+    <div class="col-7">
       <table class="table m-5">
         <tbody style="background-color: #ffffff;">
           <% @post_comments.each do |post_comment| %>
@@ -28,8 +28,11 @@
                   <%= post_comment.end_user.nick_name %>
                 <% end %>
               </td>
-              <td width='300'><%= post_comment.body %></td>
-              <td>
+              <td width='500'>
+                <%= post_comment.created_at %><br>
+                <%= post_comment.body %>
+              </td>
+              <td width='100'>
                 <% if post_comment.end_user == current_end_user %>
                   <%= link_to post_post_comment_path(@post,post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
                     <i class="fa-solid fa-trash-can"></i> 削除

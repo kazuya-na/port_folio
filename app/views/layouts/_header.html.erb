@@ -1,64 +1,64 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-body border-bottom border-dark">
-    <div class="container">
+<header class="sticky-top border-bottom border-dark">
+  <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark">
       <a class="navbar-brand text-dark m-2" href="/">
         <%= image_tag 'logo4.png', size: "150x50"%>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon bg-dark" style="border-radius: 5px;"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if end_user_signed_in? %>
-          <li>
-            <%= link_to chat_rooms_path, class:'nav-link text-light btn btn-dark ml-5' do %>
+          <li class="nav-item">
+            <%= link_to chat_rooms_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-regular fa-comments"></i> チャット
             <% end %>
           </li>
-          <li>
-            <%= link_to posts_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%= link_to posts_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-solid fa-pen-to-square"></i> 投稿一覧
             <% end %>
           </li>
-          <li>
-            <%= link_to end_users_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%= link_to end_users_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-solid fa-users"></i> 会員一覧
             <% end %>
           </li>
-          <li>
-            <%= link_to end_user_path(current_end_user), class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%= link_to end_user_path(current_end_user), class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-solid fa-user"></i> マイページ
             <% end %>
           </li>
-          <li>
-            <%= link_to destroy_end_user_session_path, method: :delete, class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%= link_to destroy_end_user_session_path, method: :delete, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-solid fa-right-from-bracket"></i> ログアウト
             <% end %>
           </li>
         <% else %>
-          <li>
-            <%=  link_to root_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%=  link_to root_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-solid fa-house"></i> Home
             <% end %>
           </li>
-          <li>
-            <%= link_to homes_about_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%= link_to homes_about_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fas fa-link"></i> About
             <% end %>
           </li>
-          <li>
-            <%=  link_to new_end_user_registration_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%=  link_to new_end_user_registration_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fas fa-user-plus"></i> 新規登録
             <% end %>
           </li>
-          <li>
-            <%= link_to new_end_user_session_path, class:'nav-link text-light btn btn-dark ml-2' do %>
+          <li class="nav-item">
+            <%= link_to new_end_user_session_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-solid fa-right-to-bracket"></i> ログイン
             <% end %>
           </li>
         <% end %>
         </ul>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>
