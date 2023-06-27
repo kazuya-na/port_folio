@@ -5,6 +5,7 @@ class CreateChatMessages < ActiveRecord::Migration[6.1]
       t.timestamps
       t.integer :end_user_id, null: false
       t.integer :chat_room_id, null: false
+      t.text :body, null: false
     end
   end
 end

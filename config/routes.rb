@@ -21,9 +21,15 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
     get "search" => "searches#search"
-
     get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
     patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
+    resources :diaries, only: [:create, :index, :show, :edit, :update, :destroy]
+    
+    resources :posts, only: [:new, :create, :index, :show, :destroy] do
+      resources:post_comments, only: [:create, :destroy]
+      resource:favorites, only: [:create, :destroy]
+    end
+
     resources :end_users, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -33,12 +39,6 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :posts, only: [:new, :create, :index, :show, :destroy] do
-      resource:favorites, only: [:create, :destroy]
-      resources:post_comments, only: [:create, :destroy]
-    end
-
-    resources :diaries, only: [:create, :index, :show, :edit, :update, :destroy]
     resources :chat_rooms, only: [:new, :create, :index, :show, :destroy] do
       resources :chat_messages, only: [:create, :destroy]
       resources :room_users, only: [:create, :destroy]

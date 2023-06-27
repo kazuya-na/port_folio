@@ -10,28 +10,29 @@
       <h5><%= flash[:alert] %></h5>
     </div>
     <div class="col-12 text-center">
-      <h1 class="pb-4"><%= @chat_room.title %></h1>
-      <h4 class="pb-4"><%= @chat_room.introduction %></h4>
+      <h1 class="pb-4"><strong><%= @chat_room.title %></strong></h1>
     </div>
-    <div class="col-4">
-      <%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %>
+    <div class="col-5 text-center p-2">
+      <h3>チャットルーム説明</h3>
+      <h4 class="border border-dark bg-light p-3"><%= @chat_room.introduction %></h4>
+      <h5 class="pt-2"><%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %></h5>
     </div>
-    <div class="col-8">
-      <table class="table">
+    <div class="col-7">
+      <table class="table m-5">
         <tbody style="background-color: #ffffff;">
           <% @chat_messages.each do |chat_message| %>
             <tr>
               <td>
-                <%= link_to(chat_message.end_user) do %>
-                  <%= image_tag chat_message.end_user.get_profile_image, size:'40x40' %><br>
-                  <%= chat_message.end_user.nick_name %>
-                <% end %>
+                <h5>
+                  <%= link_to(chat_message.end_user) do %>
+                    <%= image_tag chat_message.end_user.get_profile_image, size:'40x40' %>
+                    <%= chat_message.end_user.nick_name %>
+                  <% end %><br>
+                  <%= chat_message.body %><br>
+                </h5>
+                <%= chat_message.created_at %>
               </td>
-              <td width="500">
-                <%= chat_message.created_at %><br>
-                <%= chat_message.body %>
-              </td>
-              <td>
+              <td width="100">
                 <% if chat_message.end_user == current_end_user %>
                   <%= link_to chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
                     <i class="fa-solid fa-trash-can"></i> 削除

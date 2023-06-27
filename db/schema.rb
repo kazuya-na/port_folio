@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_13_103456) do
+ActiveRecord::Schema.define(version: 2023_06_08_112516) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2023_06_13_103456) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "end_user_id", null: false
     t.integer "chat_room_id", null: false
-    t.text "body"
+    t.text "body", null: false
   end
 
   create_table "chat_rooms", force: :cascade do |t|
@@ -71,13 +71,13 @@ ActiveRecord::Schema.define(version: 2023_06_13_103456) do
   create_table "diaries", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "end_user_id", null: false
     t.date "date", null: false
-    t.float "bt", null: false
-    t.float "weight", null: false
-    t.text "exercise", null: false
-    t.integer "end_user_id"
     t.integer "sbp"
     t.integer "dbp"
+    t.float "bt"
+    t.float "weight"
+    t.text "exercise"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2023_06_13_103456) do
     t.datetime "remember_created_at"
     t.string "nick_name"
     t.integer "gender", default: 0, null: false
-    t.date "date_of_birth"
+    t.date "date_of_birth", null: false
     t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -107,9 +107,9 @@ ActiveRecord::Schema.define(version: 2023_06_13_103456) do
   create_table "post_comments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "end_user_id", null: false
     t.integer "post_id", null: false
     t.text "body", null: false
-    t.integer "end_user_id"
   end
 
   create_table "posts", force: :cascade do |t|

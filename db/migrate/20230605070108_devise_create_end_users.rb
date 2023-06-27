@@ -16,7 +16,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[6.1]
 
       t.string :nick_name
       t.integer :gender, null: false, default: 0
-      t.date :date_of_birth
+      t.date :date_of_birth, null: false
       t.text :introduction
       t.boolean :is_deleted, null: false, default: false
 

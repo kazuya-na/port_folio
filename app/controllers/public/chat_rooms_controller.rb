@@ -37,7 +37,7 @@ class Public::ChatRoomsController < ApplicationController
 
   def correct_chat_room
     @chat_room = ChatRoom.find(params[:id])
-    unless @chat_room.end_user.id == current_end_user.id
+    unless @chat_room.end_user.id == current_end_user.id || (current_end_user.following?(@chat_room.end_user) && @chat_room.end_user.following?(current_end_user))
       redirect_to chat_rooms_path
     end
   end
