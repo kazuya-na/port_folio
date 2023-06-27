@@ -23,14 +23,14 @@
           <% @post_comments.each do |post_comment| %>
             <tr>
               <td>
-                <%= link_to(post_comment.end_user) do %>
-                  <%= image_tag post_comment.end_user.get_profile_image, size:'40x40' %><br>
-                  <%= post_comment.end_user.nick_name %>
-                <% end %>
-              </td>
-              <td width='500'>
-                <%= post_comment.created_at %><br>
-                <%= post_comment.body %>
+                <h5>
+                  <%= link_to(post_comment.end_user) do %>
+                    <%= image_tag post_comment.end_user.get_profile_image, size:'40x40' %>
+                    <%= post_comment.end_user.nick_name %>
+                  <% end %><br>
+                  <%= post_comment.body %><br>
+                </h5>
+                <%= post_comment.created_at %>
               </td>
               <td width='100'>
                 <% if post_comment.end_user == current_end_user %>

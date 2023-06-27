@@ -4,9 +4,9 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "EndUser"
-      @end_users = EndUser.looks(params[:search], params[:word])
+      @end_users = EndUser.where(end_users: { is_deleted: false }).looks(params[:search], params[:word]).order(created_at: :desc)
     else
-      @posts = Post.looks(params[:search], params[:word])
+      @posts = Post.joins(:end_user).where(end_users: { is_deleted: false }).looks(params[:search], params[:word]).order(created_at: :desc)
     end
   end
 end

@@ -1,7 +1,7 @@
 <% if current_end_user.nick_name != "guestuser" %>
   <%= form_with(model: [post, post_comment], local: false) do |f| %>
     <%= render "public/shared/error_messages", resource: post %>
-    <%= f.text_area :body, :placeholder => "1~200字で記入をお願いします。", size: '40x5' %><br>
+    <%= f.text_area :body, :placeholder => "1~25字で記入をお願いします。", size: '40x5' %><br>
     <%= f.submit "コメントする", class: 'btn btn-secondary' %>
   <% end %>
 <% end %>

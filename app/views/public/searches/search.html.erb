@@ -1,11 +1,11 @@
 <div class="container p-5">
   <div class="row">
-    <div class="col-12 text-center">
-      <h1><strong>検索一覧</strong></h1>
-    </div>
     <div class="col">
       <table class="table border border-dark">
         <% if @range == "EndUser" %>
+          <div class="text-center pb-4">
+            <h1><strong>会員検索一覧</strong></h1>
+          </div>
           <thead class="bg-dark text-light">
             <th>会員</th>
             <th width='500'>自己紹介文</th>
@@ -21,11 +21,6 @@
                   <% end %>
                 </td>
                 <td class="border-dark"><%= end_user.introduction %></td>
-                <td class="border-dark text-center" width="150">
-                  <% if end_user.is_deleted %>
-                    <p class="text-danger">退会済み</p>
-                  <% end %>
-                </td>
                 <td class="border-dark">
                   <% unless end_user.id == current_end_user.id %>
                     <% if current_end_user.following?(end_user) %>
@@ -39,6 +34,9 @@
             <% end %>
           </tbody>
         <% else %>
+          <div class="text-center pb-4">
+            <h1><strong>投稿検索一覧</strong></h1>
+          </div>
           <thead class="bg-dark text-light">
             <th>会員</th>
             <th>タイトル</th>
@@ -60,11 +58,6 @@
                   <% end %>
                 </td>
                 <td class="border-dark"><%= post.body %></td>
-                <td class="border-dark text-center" width="150">
-                  <% if post.end_user.is_deleted %>
-                    <p class="text-danger">退会済み</p>
-                  <% end %>
-                </td>
                 <td class="border-dark">
                   <% unless post.end_user.id == current_end_user.id %>
                     <% if current_end_user.following?(post.end_user) %>
