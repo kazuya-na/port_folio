@@ -30,7 +30,7 @@
                   <% end %><br>
                   <%= post_comment.body %><br>
                 </h5>
-                <%= post_comment.created_at %>
+                <%= post_comment.created_at.strftime('%Y-%m-%d %X') %>
               </td>
               <td width='100'>
                 <% if post_comment.end_user == current_end_user %>

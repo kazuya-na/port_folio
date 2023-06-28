@@ -2,17 +2,18 @@ class Public::DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
     @diary.end_user_id = current_end_user.id
-    if @diary.save
-       redirect_to diary_path(@diary), notice: "You have created book successfully."
+    if @diary.date.present? && @diary.save
+       redirect_to diary_path(@diary), notice: "You have created diary successfully."
     else
-      @diaries = Diary.all
+      @diaries = Diary.where(end_user_id: current_end_user.id)
+      @diary_new = Diary.new
       render 'index'
     end
   end
 
   def index
     @diary_new = Diary.new
-    @diaries = Diary.all
+    @diaries = Diary.where(end_user_id: current_end_user.id)
   end
 
   def show
@@ -26,7 +27,7 @@ class Public::DiariesController < ApplicationController
   def update
     @diary = Diary.find(params[:id])
     if @diary.update(diary_params)
-      redirect_to diary_path(@diary.id), notice: "You have updated user successfully."
+      redirect_to diary_path(@diary.id), notice: "You have updated diary successfully."
     else
       render :edit
     end
@@ -38,6 +39,6 @@ class Public::DiariesController < ApplicationController
   private
 
   def diary_params
-    params.require(:diary).permit(:end_user_id, :date, :bp, :dbp, :sbp, :bt, :weight, :exercise)
+    params.require(:diary).permit(:end_user_id, :date, :dbp, :sbp, :bt, :weight, :exercise)
   end
 end

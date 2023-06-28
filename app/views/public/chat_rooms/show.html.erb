@@ -30,7 +30,7 @@
                   <% end %><br>
                   <%= chat_message.body %><br>
                 </h5>
-                <%= chat_message.created_at %>
+                <%= chat_message.created_at.strftime('%Y-%m-%d %X') %>
               </td>
               <td width="100">
                 <% if chat_message.end_user == current_end_user %>

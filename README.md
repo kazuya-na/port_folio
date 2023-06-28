@@ -26,8 +26,9 @@
 - 誰かと運動内容を共有したいと思った時
 
 ## 設計書
-- アプリケーション詳細設計：https://docs.google.com/spreadsheets/d/1HSDqwhFqhExke7XQPeH5h-dyCp0KASuC/edit#gid=2011536470
-- テーブル定義書：https://docs.google.com/spreadsheets/d/1rTOe5g69elAvfC-DNBz58hfGzj8v_cc7-R-5UBYCSZg/edit#gid=232543798
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1rTOe5g69elAvfC-DNBz58hfGzj8v_cc7-R-5UBYCSZg/edit#gid=232543798)
+- [ER図](https://app.diagrams.net/#G1CgRWTrW44R_nz6-jk2osqYYBALJkmlQu)
+- [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1HSDqwhFqhExke7XQPeH5h-dyCp0KASuC/edit#gid=2011536470)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -37,7 +38,7 @@
 - IDE：Cloud9
 
 ## 使用素材
-- いらすとや：https://www.irasutoya.com/
-- photo AC：https://www.photo-ac.com/
-- Unsplash：https://unsplash.com/ja
-- SILHOUETTE ILLUST：https://www.silhouette-illust.com/keyword/%E3%83%94%E3%82%AF%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0
+- [いらすとや](https://www.irasutoya.com/)
+- [photo AC](https://www.photo-ac.com/)
+- [Unsplash](https://unsplash.com/ja)
+- [SILHOUETTE ILLUST](https://www.silhouette-illust.com/keyword/%E3%83%94%E3%82%AF%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0)
