@@ -53,19 +53,21 @@
         </table>
       </div>
     <% else %>
-      <div class="col-8 mx-auto text-center">
-        <h1><strong>60代向けSNS 運動日誌</strong></h1>
-        <p>
+      <div class="col-10 mx-auto text-center">
+        <h1 class="pb-2"><strong>60代向けSNS 運動日誌</strong></h1>
+        <h5>
           運動不足になりがちな退職後の60代に向けての運動記録サイトです。<br>
           また、同じ様に運動をしているユーザ同士が投稿機能を使って交流できるのが特徴です。<br>
           60代でSNSに慣れていない方でも使いやすい設計です。
-        </p>
+        </h5>
         <div class="m-4">
-          <%= image_tag 'running.jpg', size: '450x300' %>
+          <%= image_tag 'memo.jpg', size: '450x300' %>
         </div>
-        <%= link_to 'ゲストログイン(閲覧用)', end_users_guest_sign_in_path, class: "btn btn-outline-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-        <%= link_to 'Log in',new_end_user_session_path, class: "btn btn-outline-info btn-sm btn-block mb-3 sign_in" %>
-        <%= link_to 'Sign Up',new_end_user_registration_path, class: "btn btn-outline-success btn-sm btn-block sign_up" %>
+      </div>
+      <div class="col-7 mx-auto text-center">
+        <%= link_to 'ゲストログイン(閲覧用)', end_users_guest_sign_in_path, class: "btn btn-md btn-block btn-outline-secondary mb-3 sign_in", method: :post %>
+        <%= link_to 'Log in',new_end_user_session_path, class: "btn btn-md btn-block btn-outline-info mb-3 sign_in" %>
+        <%= link_to 'Sign Up',new_end_user_registration_path, class: "btn btn-md btn-block btn-outline-success sign_up" %>
       </div>
     <% end %>
   </div>

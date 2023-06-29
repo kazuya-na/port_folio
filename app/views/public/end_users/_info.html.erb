@@ -30,15 +30,17 @@
         </td>
         <td class="border-dark" width="400"><%= end_user.introduction %></td>
         <td class="border-dark text-center" width="200">
-          <% unless end_user.id == current_end_user.id %>
-            <% if current_end_user.following?(end_user) %>
-              <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
-            <% else %>
-              <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
+          <% if current_end_user.nick_name != "guestuser" %>
+            <% unless end_user.id == current_end_user.id %>
+              <% if current_end_user.following?(end_user) %>
+                <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+              <% else %>
+                <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
+              <% end %>
+            <% end %><br>
+            <% if end_user.is_deleted %>
+              <h6 class="text-danger text-center mt-2">退会済み</h6>
             <% end %>
-          <% end %><br>
-          <% if end_user.is_deleted %>
-            <h6 class="text-danger text-center mt-2">退会済み</h6>
           <% end %>
         </td>
     <% else %>
