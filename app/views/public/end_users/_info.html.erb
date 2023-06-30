@@ -1,35 +1,53 @@
-<table class="table border border-dark">
-  <thead class="bg-dark text-light">
-    <th>アイコン</th>
-    <th>ニックネーム</th>
-    <th>性別</th>
-    <th>生年月日(年齢)</th>
-    <th>自己紹介</th>
-    <th colspan="6"></th>
-  </thead>
+<table class="table h5">
+  <!--<thead class="bg-dark text-light">-->
+  <!--  <th>アイコン</th>-->
+  <!--  <th>ニックネーム</th>-->
+  <!--  <th>性別</th>-->
+  <!--  <th>生年月日(年齢)</th>-->
+  <!--  <th>自己紹介</th>-->
+  <!--  <th colspan="6"></th>-->
+  <!--</thead>-->
   <% if end_user.nick_name != "guestuser" %>
-    <tbody style="background-color: #ffffff;">
+    <tbody>
       <tr>
-        <td class="border-dark" width="100">
-          <%= image_tag end_user.get_profile_image, size:'70x70' %>
+        <td>
+          <%= image_tag end_user.get_profile_image, size:'150x150' %><br>
+          <strong><%= end_user.nick_name %></strong>
+
+          <div>
+            <% if current_end_user.nick_name != "guestuser" %>
+              <% if @end_user == current_end_user %>
+                <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success m-1' %>
+                <%= link_to '日誌', diaries_path, class: 'btn btn-info m-1' %>
+              <% end %>
+            <% end %>
+          </div>
         </td>
-        <td class="border-dark" width="200">
-          <strong><%= end_user.nick_name %></strong><br>
+      </tr>
+      <tr>
+        <td>
           <%= link_to end_user_followings_path(end_user) do %>
             フォロー数：<%= end_user.followings.count %>
           <% end %><br>
           <%= link_to end_user_followers_path(end_user) do %>
             フォロワー数：<%= end_user.followers.count %>
+          <% end %><br>
+          <%= "#{end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %><br>
+          性別：<%= end_user.gender_i18n %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <% if end_user.introduction.present? %>
+            <%= end_user.introduction %>
+          <% else %>
+            自己紹介文がありません。<br>
+            編集画面から入力できます。
           <% end %>
         </td>
-        <td class="border-dark" width="100"><%= end_user.gender_i18n %></td>
-        <td class="border-dark" width="200">
-          <div class='row'>
-            <%= "#{end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %>
-          </div>
-        </td>
-        <td class="border-dark" width="400"><%= end_user.introduction %></td>
-        <td class="border-dark text-center" width="200">
+      </tr>
+      <tr>
+        <td>
           <% if current_end_user.nick_name != "guestuser" %>
             <% unless end_user.id == current_end_user.id %>
               <% if current_end_user.following?(end_user) %>
@@ -43,6 +61,7 @@
             <% end %>
           <% end %>
         </td>
+      </tr>
     <% else %>
       <tr>
         <td>
@@ -59,7 +78,7 @@
     <% end %>
   </tbody>
 </table>
-<div class="border-dark d-grid gap-2 d-md-flex justify-content-md-end">
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <% if current_end_user.nick_name != "guestuser" %>
     <% if @end_user == current_end_user %>
       <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-sm btn-danger m-1' %>
