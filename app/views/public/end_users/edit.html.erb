@@ -1,3 +1,6 @@
+<%= link_to end_user_path(current_end_user), class: 'btn btn-outline-success mt-2 ml-4' do %>
+  <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+<% end %>
 <div class="container p-5">
   <div class="row">
     <div class="col-12 text-center pb-4">
@@ -71,4 +74,11 @@
     <% end %>
     </div>
   </div>
+</div>
+<div class="text-right p-5">
+  <% if current_end_user.nick_name != "guestuser" %>
+    <% if @end_user == current_end_user %>
+      退会のお手続きは<%= link_to 'こちら', withdraw_confirm_path, class: 'btn btn-sm btn-outline-danger m-1' %>からお願いいたします。
+    <% end %>
+  <% end %>
 </div>

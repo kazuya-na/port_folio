@@ -1,16 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
 
 main {
-    background-color: #f5f5f5;
+  background-image: url("/images/bg.jpg");
+  height: 800px;
+  background-size: cover;
 }
 
-header {
-  background-color: #ffffe0;
-}
-
-footer {
-  background-color: #ffffe0;
-}
 
 .pagination {
   justify-content: center;

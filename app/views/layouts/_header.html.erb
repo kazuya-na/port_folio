@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="navbar navbar-expand-md navbar-dark">
       <a class="navbar-brand text-dark m-2" href="/">
-        <%= image_tag 'logo4.png', size: "150x50"%>
+        <%= image_tag 'logo.jpeg', size: "150x100"%>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon bg-dark" style="border-radius: 5px;"></span>
@@ -54,6 +54,11 @@
           <li class="nav-item">
             <%= link_to new_end_user_session_path, class:'nav-link text-light btn btn-dark m-1' do %>
               <i class="fa-solid fa-right-to-bracket"></i> ログイン
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to end_users_guest_sign_in_path, class: "nav-link text-light btn btn-dark m-1", method: :post do %>
+              <i class="fa-solid fa-right-to-bracket"></i> ゲストログイン
             <% end %>
           </li>
         <% end %>

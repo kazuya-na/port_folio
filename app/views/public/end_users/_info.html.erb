@@ -1,27 +1,22 @@
 <table class="table h5">
-  <!--<thead class="bg-dark text-light">-->
-  <!--  <th>アイコン</th>-->
-  <!--  <th>ニックネーム</th>-->
-  <!--  <th>性別</th>-->
-  <!--  <th>生年月日(年齢)</th>-->
-  <!--  <th>自己紹介</th>-->
-  <!--  <th colspan="6"></th>-->
-  <!--</thead>-->
   <% if end_user.nick_name != "guestuser" %>
     <tbody>
       <tr>
         <td>
           <%= image_tag end_user.get_profile_image, size:'150x150' %><br>
           <strong><%= end_user.nick_name %></strong>
-
-          <div>
-            <% if current_end_user.nick_name != "guestuser" %>
-              <% if @end_user == current_end_user %>
-                <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success m-1' %>
-                <%= link_to '日誌', diaries_path, class: 'btn btn-info m-1' %>
+          <% if current_end_user.nick_name != "guestuser" %>
+            <% if @end_user == current_end_user %>
+              <%= link_to '編集', edit_end_user_path(@end_user), class: 'btn btn-success m-1' %>
+              <%= link_to '日誌', diaries_path, class: 'btn btn-info m-1' %>
+            <% else %>
+              <% if current_end_user.following?(end_user) %>
+                <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+              <% else %>
+                <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
               <% end %>
             <% end %>
-          </div>
+          <% end %>
         </td>
       </tr>
       <tr>
@@ -46,42 +41,22 @@
           <% end %>
         </td>
       </tr>
-      <tr>
-        <td>
-          <% if current_end_user.nick_name != "guestuser" %>
-            <% unless end_user.id == current_end_user.id %>
-              <% if current_end_user.following?(end_user) %>
-                <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
-              <% else %>
-                <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
-              <% end %>
-            <% end %><br>
-            <% if end_user.is_deleted %>
-              <h6 class="text-danger text-center mt-2">退会済み</h6>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
     <% else %>
       <tr>
         <td>
-          <%= image_tag end_user.get_profile_image, size:'40x40' %>
+          <%= image_tag end_user.get_profile_image, size:'150x150' %><br>
+          <strong><%= end_user.nick_name %></strong>
         </td>
+      </tr>
+      <tr>
         <td>
-          <strong><%= end_user.nick_name %></strong><br>
-          xxxx@example.com
+          xx年xx月xx日(xx)<br>
+          性別：未登録
         </td>
-        <td>未登録</td>
-        <td>xx年xx月xx日(xx)</td>
+      </tr>
+      <tr>
         <td>新規登録するとここに自己紹介文が書き込めます。</td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <% if current_end_user.nick_name != "guestuser" %>
-    <% if @end_user == current_end_user %>
-      <%= link_to '退会はこちら', withdraw_confirm_path, class: 'btn btn-sm btn-danger m-1' %>
-    <% end %>
-  <% end %>
-</div>

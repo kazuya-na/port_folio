@@ -4,9 +4,10 @@
 <div class="container p-5">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center"><strong><%= @end_user.nick_name %>さんのマイページ</strong></h1>
+      <h1><strong><%= @end_user.nick_name %>さんのマイページ</strong></h1>
     </div>
-    <div class="col-4">
+    <div class="col-4 pt-4">
+      <h3>会員情報</h3>
       <%= render 'info', end_user: @end_user %>
     </div>
     <div class="col-8">
@@ -33,12 +34,32 @@
                 <td><%= post.title %></td>
                 <td><%= post.body.truncate(24, omission: '...') %></td>
                 <td>
-                  <%= link_to post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
-                    <i class="fa-solid fa-trash-can"></i> 削除
+                  <% if current_end_user.nick_name != "guestuser" %>
+                    <% if @end_user == current_end_user %>
+                      <%= link_to post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+                        <i class="fa-solid fa-trash-can"></i> 削除
+                      <% end %>
+                    <% end %>
                   <% end %>
                 </td>
               </tr>
             <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h3 class="pt-4">
+          ゲストユーザーさんの投稿一覧
+        </h3>
+        <table class="table border">
+          <thead style="background-color: #fffacd;">
+            <th>タイトル</th>
+            <th>内容</th>
+          </thead>
+          <tbody style="background-color: #ffffff;">
+              <tr>
+                <td>ここにタイトルが入ります</td>
+                <td>ここに内容が入ります</td>
+              </tr>
           </tbody>
         </table>
       <% end %>
