@@ -1,54 +1,84 @@
+<%= link_to end_user_path(current_end_user), class: 'btn btn-outline-success mt-2 ml-4' do %>
+  <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+<% end %>
 <div class="container p-5">
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center pb-4">
       <h1>プロフィール編集画面</h1>
     </div>
-    <div class="col-12 text-center">
+    <div class="col-8 mx-auto h5">
       <%= form_with model: @end_user, url: end_user_path, method: :patch, local:true do |f| %>
+        <table class="table h5">
+          <tr>
+            <td>プロフィール画像</td>
+            <td>
+              <div class="form-group">
+                <%= f.file_field :profile_image %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td>
+              <div class="field">
+                <%= f.text_field :nick_name, autocomplete: "nick_name" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>メールアドレス(非公開)</td>
+            <td>
+              <div class="field">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>性別</td>
+            <td>
+              <div class="field">
+                <%= f.radio_button :gender, EndUser.genders.key(0) %>
+                <%= f.label :gender, EndUser.genders_i18n[:gender_private], value: EndUser.genders.key(0) %>
 
-      <div class="form-group">
-        <%= f.label :'メールアドレス' %><br>
-        <%= f.email_field :email %>
-      </div>
+                <%= f.radio_button :gender, EndUser.genders.key(1) %>
+                <%= f.label :gender, EndUser.genders_i18n[:male], value: EndUser.genders.key(1) %>
 
-      <div class="form-group">
-        <%= f.label :'プロフィール画像' %><br>
-        <%= f.file_field :profile_image %>
-      </div>
+                <%= f.radio_button :gender, EndUser.genders.key(2) %>
+                <%= f.label :gender, EndUser.genders_i18n[:female], value: EndUser.genders.key(1) %>
 
-      <div class="form-group">
-        <%= f.label :'ニックネーム' %><br>
-        <%= f.text_field :nick_name %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :'自己紹介' %><br>
-        <%= f.text_area :introduction %>
-      </div>
-
-      <div class="form-group">
-        <%= f.radio_button :gender, EndUser.genders.key(0) %>
-        <%= f.label :gender, EndUser.genders_i18n[:gender_private], value: EndUser.genders.key(0) %>
-
-        <%= f.radio_button :gender, EndUser.genders.key(1) %>
-        <%= f.label :gender, EndUser.genders_i18n[:male], value: EndUser.genders.key(1) %>
-
-        <%= f.radio_button :gender, EndUser.genders.key(2) %>
-        <%= f.label :gender, EndUser.genders_i18n[:female], value: EndUser.genders.key(1) %>
-
-        <%= f.radio_button :gender, EndUser.genders.key(3) %>
-        <%= f.label :gender, EndUser.genders_i18n[:others], value: EndUser.genders.key(1) %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :'生年月日' %><br>
-        <%= f.date_select :date_of_birth, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 55), default: Date.new(1960, 1, 1) %>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit '更新する', class: 'btn btn-info' %>
+                <%= f.radio_button :gender, EndUser.genders.key(3) %>
+                <%= f.label :gender, EndUser.genders_i18n[:others], value: EndUser.genders.key(1) %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>生年月日</td>
+            <td>
+              <div class="field">
+                <%= f.date_select :date_of_birth, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 55), default: Date.new(1960, 1, 1) %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>自己紹介文</td>
+            <td>
+              <div class="form-group">
+                <%= f.text_area :introduction, size: '30x5' %>
+              </div>
+            </td>
+          </tr>
+        </table>
+      <div class="form-group text-center">
+        <%= f.submit '更新する', class: 'btn btn-lg btn-info' %>
       </div>
     <% end %>
     </div>
   </div>
+</div>
+<div class="text-right p-5">
+  <% if current_end_user.nick_name != "guestuser" %>
+    <% if @end_user == current_end_user %>
+      退会のお手続きは<%= link_to 'こちら', withdraw_confirm_path, class: 'btn btn-sm btn-outline-danger m-1' %>からお願いいたします。
+    <% end %>
+  <% end %>
 </div>

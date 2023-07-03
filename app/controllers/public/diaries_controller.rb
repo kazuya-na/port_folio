@@ -3,7 +3,8 @@ class Public::DiariesController < ApplicationController
     @diary = Diary.new(diary_params)
     @diary.end_user_id = current_end_user.id
     if @diary.date.present? && @diary.save
-       redirect_to diary_path(@diary), notice: "You have created diary successfully."
+       flash[:notice] = '日誌に記録しました。'
+       redirect_to diary_path(@diary)
     else
       @diaries = Diary.where(end_user_id: current_end_user.id)
       @diary_new = Diary.new
@@ -13,7 +14,7 @@ class Public::DiariesController < ApplicationController
 
   def index
     @diary_new = Diary.new
-    @diaries = Diary.where(end_user_id: current_end_user.id)
+    @diaries = Diary.where(end_user_id: current_end_user.id).order(created_at: :desc)
   end
 
   def show
@@ -27,13 +28,18 @@ class Public::DiariesController < ApplicationController
   def update
     @diary = Diary.find(params[:id])
     if @diary.update(diary_params)
-      redirect_to diary_path(@diary.id), notice: "You have updated diary successfully."
+      flash[:notice] = '日誌を更新しました。'
+      redirect_to diary_path(@diary.id)
     else
       render :edit
     end
   end
 
   def destroy
+    diary = Diary.find(params[:id])
+    diary.destroy
+    flash[:alert] = '日誌を削除しました。'
+    redirect_to request.referer
   end
 
   private

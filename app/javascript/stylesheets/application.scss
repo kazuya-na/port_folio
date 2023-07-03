@@ -1,16 +1,15 @@
 @use '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Kosugi+Maru&family=Noto+Sans+JP:wght@300&family=Zen+Maru+Gothic&display=swap');
 
 main {
-    background-color: #f5f5f5;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background-image: url("../images/bg.jpg");
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
+
 }
 
-header {
-  background-color: #ffffe0;
-}
-
-footer {
-  background-color: #ffffe0;
-}
 
 .pagination {
   justify-content: center;
