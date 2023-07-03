@@ -1,15 +1,15 @@
-<%= link_to chat_rooms_path, class: 'btn btn-outline-success mt-2 ml-4' do %>
-  <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
-<% end %>
-<div class="container pb-5">
+<div class="text-center p-2">
+  <h3 class="text-light" style="background-color: #3cb371; border-radius: 5px;"><%= flash[:notice] %></h3>
+  <h3 class="text-light" style="background-color: #dc143c; border-radius: 5px;"><%= flash[:alert] %></h3>
+</div>
+<div class="container p-5">
   <div class="row">
-    <div class="col text-success">
-      <h5><%= flash[:notice] %></h5>
+    <div class="col-3">
+      <%= link_to chat_rooms_path, class: 'btn btn-outline-success mt-2 ml-4' do %>
+        <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+      <% end %>
     </div>
-    <div class="col text-danger">
-      <h5><%= flash[:alert] %></h5>
-    </div>
-    <div class="col-12 text-center">
+    <div class="col-9">
       <h1 class="pb-4"><strong><%= @chat_room.title %></strong></h1>
     </div>
     <div class="col-5 text-center p-2">

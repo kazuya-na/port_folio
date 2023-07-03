@@ -1,16 +1,48 @@
-<%= link_to diaries_path, class: 'btn btn-outline-success mt-2 ml-4' do %>
-  <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
-<% end %>
+<div class="text-center p-2">
+  <h3 class="text-light" style="background-color: #3cb371; border-radius: 5px;"><%= flash[:notice] %></h3>
+  <h3 class="text-light" style="background-color: #dc143c; border-radius: 5px;"><%= flash[:alert] %></h3>
+</div>
 <div class="container p-5">
   <div class="row">
-    <div class="col">
-      <h1>日誌詳細</h1>
-      <div><%= link_to '編集', edit_diary_path(@diary.id), class: 'btn btn-success' %></div>
-      日付：<%= @diary.date %><br>
-      血圧：<%= @diary.dbp %> / <%= @diary.sbp %> mmHg<br>
-      体温：<%= @diary.bt %> ℃<br>
-      体重：<%= @diary.weight %> kg<br>
-      運動：<%= @diary.exercise %>
+    <div class="col-3">
+      <%= link_to diaries_path, class: 'btn btn-outline-success mt-2 ml-4' do %>
+        <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+      <% end %>
+    </div>
+    <div class="col-6 h4">
+      <h1>
+        <strong>日誌詳細</strong>
+        <%= link_to '編集', edit_diary_path(@diary.id), class: 'btn btn-success' %>
+      </h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              日付：<%= @diary.date %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              血圧：<%= @diary.dbp %> / <%= @diary.sbp %> mmHg
+            </td>
+          </tr>
+          <tr>
+            <td>
+              体温：<%= @diary.bt %> ℃
+            </td>
+          </tr>
+          <tr>
+            <td>
+              体重：<%= @diary.weight %> kg
+            </td>
+          </tr>
+          <tr>
+            <td>
+              運動：<%= @diary.exercise %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

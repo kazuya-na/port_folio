@@ -1,3 +1,6 @@
+<%= link_to end_user_path(current_end_user), class: 'btn btn-outline-success mt-2 ml-4' do %>
+  <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+<% end %>
 <div class="container p-5">
   <div class="row">
     <div class="col-12 text-center pb-4">
@@ -15,20 +18,20 @@
           </thead>
           <tbody>
             <% @end_users.each do |end_user| %>
-              <tr>
-                <td class="border-dark" width="200">
+              <tr class="h5">
+                <td class="border-dark">
                   <%= link_to(end_user) do %>
-                    <%= image_tag end_user.get_profile_image, size:'70x70' %>
+                    <%= image_tag end_user.get_profile_image, size:'80x80' %><br>
                     <%= end_user.nick_name %>
                   <% end %>
                 </td>
-                <td class="border-dark" width="500"><%= end_user.introduction %></td>
-                <td class="border-dark text-center" width="150">
+                <td class="border-dark"><%= end_user.introduction %></td>
+                <td class="border-dark text-center">
                   <% if end_user.is_deleted %>
                     <p class="text-danger">退会済み</p>
                   <% end %>
                 </td>
-                <td class="border-dark" width="150">
+                <td class="border-dark">
                   <% unless end_user.id == current_end_user.id %>
                     <% if current_end_user.following?(end_user) %>
                       <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
