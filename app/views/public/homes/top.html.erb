@@ -10,7 +10,16 @@
     <% if end_user_signed_in? %>
       <div class="col-12 text-center">
         <%= render 'public/searches/search', range: @range %>
-        <h1 class="p-4"><strong>ようこそ、運動日誌へ！！</strong></h1>
+        <h1 class="p-4">
+          <strong>
+            ようこそ My Diary へ
+            <i class="fa-solid fa-book-open"></i>
+          </strong>
+        </h1>
+        <h5>
+          My Diaryをご利用いただきありがとうございます。<br>
+          このサイトでは運動や身体に関する記録をしたり、投稿・チャットを利用して交流ができます。
+        </h5>
       </div>
 
       <div class="col-5">

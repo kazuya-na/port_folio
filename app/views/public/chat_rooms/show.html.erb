@@ -4,13 +4,13 @@
 </div>
 <div class="container p-5">
   <div class="row">
-    <div class="col-3">
-      <%= link_to chat_rooms_path, class: 'btn btn-outline-success mt-2 ml-4' do %>
+    <div class="col">
+      <%= link_to chat_rooms_path, class: 'btn btn-success' do %>
         <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
       <% end %>
     </div>
-    <div class="col-9">
-      <h1 class="pb-4"><strong><%= @chat_room.title %></strong></h1>
+    <div class="col-12 text-center h1 pb-4">
+      <strong><%= @chat_room.title %></strong>
     </div>
     <div class="col-5 text-center p-2">
       <h3>チャットルーム説明</h3>

@@ -1,7 +1,14 @@
 <div class="container p-5">
   <div class="row">
-    <div class="col">
+    <div class="col-3">
+      <%= link_to end_user_path(current_end_user), class: 'btn btn-success' do %>
+        <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+      <% end %>
+    </div>
+    <div class="col-6">
       <h1 class="text-center pb-4">いいねした投稿一覧</h1>
+    </div>
+    <div class="col">
       <table class="table border border-dark">
         <thead class="bg-dark text-light">
           <th>ユーザー</th>

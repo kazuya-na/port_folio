@@ -2,6 +2,6 @@
   <%= form_with(model: [post, post_comment], local: false) do |f| %>
     <%= render "public/shared/error_messages", resource: post %>
     <%= f.text_area :body, :placeholder => "1~25字で記入をお願いします。", size: '40x5' %><br>
-    <%= f.submit "コメントする", class: 'btn btn-secondary' %>
+    <%= f.submit "コメントする", class: 'btn btn-primary' %>
   <% end %>
 <% end %>

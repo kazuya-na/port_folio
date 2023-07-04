@@ -1,9 +1,11 @@
-<%= link_to end_user_path(current_end_user), class: 'btn btn-outline-success mt-2 ml-4' do %>
-  <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
-<% end %>
 <div class="container p-5">
   <div class="row">
-    <div class="col-12 text-center pb-4">
+    <div class="col-3">
+      <%= link_to end_user_path(current_end_user), class: 'btn btn-success' do %>
+        <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+      <% end %>
+    </div>
+    <div class="col-9 pb-4">
       <h1>プロフィール編集画面</h1>
     </div>
     <div class="col-8 mx-auto h5">
