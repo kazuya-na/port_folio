@@ -1,23 +1,98 @@
+<div class="text-center p-2">
+  <h3 class="text-light" style="background-color: #3cb371; border-radius: 5px;"><%= flash[:notice] %></h3>
+  <h3 class="text-light" style="background-color: #dc143c; border-radius: 5px;"><%= flash[:alert] %></h3>
+</div>
 <h5 class="bg-danger text-center p-3 m-4" style="color: #fff700; border-radius: 10px;">
   <i class="fa-solid fa-triangle-exclamation" style="color: #fff700;"></i> 注意！具合が悪くなったり、痛みがある時は運動を中止しましょう。無理なく運動を継続させましょう！
 </h5>
 <div class="container pt-2 pb-5">
   <div class="row">
-    <div class="col-12 text-success">
-      <h5><%= flash[:notice] %></h5>
+    <div class="col-12 text-center">
+      <%= render 'public/searches/search', range: @range %>
+      <h1 class="p-4">
+        <strong>
+          ようこそ My Diary へ
+          <i class="fa-solid fa-book-open"></i>
+        </strong>
+      </h1>
+      <h5>
+        My Diaryをご利用いただきありがとうございます。<br>
+        このサイトでは運動や身体に関する記録をしたり、投稿・チャットを利用して交流ができます。
+      </h5>
     </div>
-    <div class="btn-wrapper col-8 mx-auto text-center">
-          <%= render 'public/searches/search', range: @range %>
-          <h1 class="p-4"><strong>ようこそ、運動日誌へ！！</strong></h1>
-          <h5>
-            運動の継続を目指し、日々の運動を記録していきましょう！<br>
-            また、投稿機能を使って発言したり、チャット機能を使って<br>
-            他のユーザーとの交流もしてみましょう！
-          </h5>
-          <%= image_tag 'memo.jpg', size: '450x300' %><br>
-          <%= image_tag 'arrow.png', size: '250x300' %>
-          <h5>日々の運動を記録することで運動意欲を向上させましょう！</h5>
-          <%= image_tag 'walking.jpg', size: '450x300' %>
+
+    <div class="col-5">
+      <table>
+        <tbody>
+          <tr style="text-align: center;">
+            <td class="pt-5">
+              <%= image_tag 'diary.png', size: '150x150', class: 'p-2' %>
+              <h4 class="text-light bg-success p-2" style="border-radius: 10px;">
+                マイページの日誌ボタンから日々の記録をしてみよう！<br>
+              </h4>
+            </td>
+          </tr>
+          <tr style="text-align: center;">
+            <td class="pt-5">
+              <%= image_tag 'post.png', size: '200x150', class: 'p-2' %>
+              <h4 class="text-light bg-primary p-2" style="border-radius: 10px;">
+                投稿して自分のことを他の人に知ってもらおう！<br>
+              </h4>
+            </td>
+          </tr>
+          <tr style="text-align: center;">
+            <td class="pt-5">
+              <%= image_tag 'chat.png', size: '200x200', class: 'p-2' %>
+              <h4 class="text-light bg-info p-2" style="border-radius: 10px;">
+                お互いにフォローしてチャット機能を利用しよう！<br>
+              </h4>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-6">
+      <table>
+        <tbody>
+          <tr style="text-align: right;">
+            <td class="pt-5 pb-5">
+              <%= image_tag 'step_up.png', size: '100x80', class: 'p-2' %>
+              <h5>
+                日誌に記録して、日々の運動と<br>
+                身体の調子を管理しましょう！
+              </h5>
+            </td>
+            <td class="pt-5 pb-5">
+              <%= image_tag 'memo.jpg', size: '300x200', class: 'rounded-circle' %>
+            </td>
+          </tr>
+          <tr style="text-align: left;">
+            <td class="pt-5 pb-5"><%= image_tag 'walking.jpg', size: '300x200', class: 'rounded-circle' %></td>
+            <td class="pt-5 pb-5">
+              <%= image_tag 'exercise.png', size: '100x70' %>
+              <h5>
+                日々の運動を記録することで<br>
+                運動意欲を向上させましょう！
+              </h5>
+            </td>
+          </tr>
+          <tr style="text-align: right;">
+            <td class="pt-5">
+              <%= image_tag 'post.png', size: '100x80', class: 'p-2' %>
+              <h5>
+                自分が取り組んだ運動や出来事を<br>
+                投稿して他の人に共有しよう！
+              </h5>
+            </td>
+            <td class="pt-5">
+              <%= image_tag 'talking.jpg', size: '300x200', class: 'rounded-circle' %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

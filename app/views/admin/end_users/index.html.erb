@@ -1,40 +1,37 @@
 <div class="container p-5">
   <div class="row">
-    <div class="col-12 text-center">
-      <h1><strong>会員一覧</strong></h1>
+    <div class="col-12 text-center pb-4">
+      <%= render 'public/searches/search', range: @range %>
+      <h1 class="pt-4"><strong>会員一覧</strong></h1>
     </div>
-    <div class="col">
-      <table class="table border border-dark">
-        <thead class="bg-dark text-light">
-          <th>会員氏名</th>
-          <th>自己紹介文</th>
-          <th>会員ステータス</th>
-        </thead>
-        <tbody>
-          <% @end_users.each do |end_user| %>
-            <% if end_user.nick_name != "guestuser" %>
-              <tr>
-                <td class="border-dark" width="150">
-                  <%= link_to admin_end_user_path(end_user) do %>
-                    <%= image_tag end_user.get_profile_image, size:'50x50' %>
-                    <%= end_user.nick_name %>
-                  <% end %>
-                </td>
-                <td class="border-dark" width="600">
-                  <%= end_user.introduction %>
-                </td>
-                <td class="border-dark text-center" width="150">
-                  <% if end_user.is_deleted %>
-                    <p class="text-danger">退会</p>
-                  <% else %>
-                    <p class="text-success">有効</p>
-                  <% end %>
-                </td>
-              </tr>
+  </div>
+  <div class="row row-cols-3">
+    <% @end_users.each do |end_user| %>
+      <% if end_user.nick_name != "guestuser" %>
+        <div class="col text-center p-2" style="border-radius: 10px;">
+          <h4>
+            <%= link_to(end_user) do %>
+              <%= image_tag end_user.get_profile_image, size: '200x200' %><br>
+              <%= end_user.nick_name %><br>
             <% end %>
+          </h4>
+          <h5>
+            <% if end_user.introduction.present? %>
+              <%= end_user.introduction.truncate(20, omission: '...') %>
+            <% else %>
+              自己紹介がありません
+            <% end %>
+          </h5>
+          <% if end_user.is_deleted %>
+            <p class="text-danger">退会</p>
+          <% else %>
+            <p class="text-success">有効</p>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="col-12 text-center pt-4">
+      <%= paginate @end_users %>
     </div>
   </div>
 </div>
