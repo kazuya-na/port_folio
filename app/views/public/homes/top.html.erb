@@ -106,16 +106,15 @@
       </div>
     <% else %>
       <div class="col-10 mx-auto text-center">
-        <h1 class="pb-2"><strong>運動日誌</strong></h1>
-        <h3>〜my diary〜</h3>
+        <h1 class="pb-2"><strong>My Diary</strong></h1>
+        <h5 class="pb-4">
+          このサイトは、退職後の運動不足になりがちな方々に向けての運動記録サイトです。<br>
+          また、同じ様に運動をしている方々が投稿機能を使って交流できるのが特徴です。<br>
+          SNSに慣れていない方でも使いやすい設計です。
+        </h5>
         <div class="m-4">
           <%= image_tag 'memo.jpg', size: '450x300' %>
         </div>
-        <h5 class="pb-4">
-          運動不足になりがちな退職後の60代に向けての運動記録サイトです。<br>
-          また、同じ様に運動をしている方々が投稿機能を使って交流できるのが特徴です。<br>
-          60代でSNSに慣れていない方でも使いやすい設計です。
-        </h5>
       </div>
       <div class="col-7 mx-auto text-center">
         <%= link_to 'さっそくやってみる',new_end_user_registration_path, class: "btn btn-md btn-primary" %>
