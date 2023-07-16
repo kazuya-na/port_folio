@@ -6,22 +6,23 @@
       </h1>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+        <%= render "public/shared/error_messages" %>
 
+        <div class="text-danger h5">*は必須項目</div>
         <table class="table h5">
           <tr>
-            <td>ニックネーム</td>
+            <td>ニックネーム <span class="text-danger">*</span></td>
             <td>
               <div class="field">
-                <%= f.text_field :nick_name, autocomplete: "nick_name" %>
+                <%= f.text_field :nick_name, autofocus: true, :placeholder => "2~15文字で入力してください", autocomplete: "nick_name", class: 'form-control' %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>メールアドレス(非公開)</td>
+            <td>メールアドレス(非公開) <span class="text-danger">*</span></td>
             <td>
               <div class="field">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                <%= f.email_field :email, :placeholder => "mydiary@example.com", autocomplete: "email", class: 'form-control' %>
               </div>
             </td>
           </tr>
@@ -44,7 +45,7 @@
             </td>
           </tr>
           <tr>
-            <td>生年月日</td>
+            <td>生年月日 <span class="text-danger">*</span></td>
             <td>
               <div class="field">
                 <%= f.date_select :date_of_birth, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 55), default: Date.new(1960, 1, 1) %>
@@ -57,18 +58,19 @@
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %>文字以上)</em>
               <% end %>
+              <span class="text-danger">*</span>
             </td>
             <td>
               <div class="field">
-                <%= f.password_field :password, autocomplete: "new-password" %>
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>パスワード(確認用)</td>
+            <td>パスワード(確認用) <span class="text-danger">*</span></td>
             <td>
               <div class="field">
-                <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
               </div>
             </td>
           </tr>

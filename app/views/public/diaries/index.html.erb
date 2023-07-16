@@ -5,20 +5,20 @@
 <div class="container p-5">
   <div class="row">
     <div class="col">
-      <%= link_to end_user_path(current_end_user), class: 'btn btn-success' do %>
+      <%= link_to end_user_path(current_end_user), class: 'btn btn-secondary' do %>
         <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
       <% end %>
     </div>
     <div class="col-12 text-center h1">
       <strong><%= current_end_user.nick_name %>さんの日誌</strong>
     </div>
-    <div class="col">
+    <div class="col h4">
       <% @diaries.each do |diary| %>
         <table class="table">
           <tbody>
             <td><%= link_to diary.date, diary_path(diary.id) %></td>
             <td>
-              <%= link_to diary_path(diary), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+              <%= link_to diary_path(diary), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger", remote: true do %>
                 <i class="fa-solid fa-trash-can"></i> 削除
               <% end %>
             </td><br>
@@ -26,11 +26,11 @@
         </table>
       <% end %>
     </div>
-    <div class="col">
+    <div class="col h4">
       <%= form_with model: @diary_new do |f| %>
 
         <div class="form-group">
-          <%= f.label :'日付' %><br>
+          <%= f.label :'日付' %> <span class="text-danger">*</span><br>
           <%= f.date_field :date %>
         </div>
 
@@ -54,7 +54,7 @@
           <%= f.text_area :exercise, size: '50x5' %>
         </div>
 
-          <%= f.submit "送信" %>
+          <%= f.submit "保存", class: 'btn btn-lg btn-primary' %>
       <% end %>
     </div>
   </div>

@@ -4,13 +4,15 @@
 </div>
 <div class="container p-5">
   <div class="row">
-    <div class="col-2">
-      <%= link_to end_users_path, class: 'btn btn-success' do %>
-        <i class="fa-solid fa-arrow-left"></i> 会員一覧
+    <div class="col">
+      <% if @end_user != current_end_user %>
+        <%= link_to end_users_path, class: 'btn btn-secondary' do %>
+          <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
+        <% end %>
       <% end %>
     </div>
-    <div class="col-10">
-      <h1><strong><%= @end_user.nick_name %>さんのマイページ</strong></h1>
+    <div class="col-12 text-center h1">
+      <strong><%= @end_user.nick_name %>さんのマイページ</strong>
     </div>
     <div class="col-4 pt-4">
       <h3>会員情報</h3>
@@ -22,7 +24,7 @@
           <%= @end_user.nick_name %>さんの投稿一覧
           <% if current_end_user.nick_name != "guestuser" %>
             <% if @end_user == current_end_user %>
-              <%= link_to favorites_end_user_path(@end_user), class: 'btn btn-outline-dark m-1' do %>
+              <%= link_to favorites_end_user_path(@end_user), class: 'btn btn-secondary m-1' do %>
                 <i class="fa-solid fa-heart" style="color: #ff1f4b;"></i> いいねした投稿
               <% end %>
             <% end %>

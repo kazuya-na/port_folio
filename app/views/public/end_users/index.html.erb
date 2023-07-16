@@ -17,7 +17,7 @@
           </h4>
           <h5>
             <% if end_user.introduction.present? %>
-              <%= end_user.introduction.truncate(20, omission: '...') %>
+              <%= end_user.introduction.truncate(15, omission: '...') %>
             <% else %>
               自己紹介がありません
             <% end %>

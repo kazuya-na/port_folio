@@ -1,11 +1,11 @@
 <div class="container p-5">
   <div class="row">
-    <div class="col-3">
-      <%= link_to end_user_path(current_end_user), class: 'btn btn-success' do %>
+    <div class="col">
+      <%= link_to end_user_path(current_end_user), class: 'btn btn-secondary' do %>
         <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
       <% end %>
     </div>
-    <div class="col-9 pb-4">
+    <div class="col-12 text-center pb-4">
       <h1>プロフィール編集画面</h1>
     </div>
     <div class="col-8 mx-auto h5">
@@ -77,10 +77,10 @@
     </div>
   </div>
 </div>
-<div class="text-right p-5">
+<div class="h5 text-right p-5">
   <% if current_end_user.nick_name != "guestuser" %>
     <% if @end_user == current_end_user %>
-      退会のお手続きは<%= link_to 'こちら', withdraw_confirm_path, class: 'btn btn-sm btn-outline-danger m-1' %>からお願いいたします。
+      退会のお手続きは<%= link_to 'こちら', withdraw_confirm_path, class: 'btn btn-outline-danger m-1' %>からお願いいたします。
     <% end %>
   <% end %>
 </div>

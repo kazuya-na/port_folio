@@ -8,15 +8,17 @@
 <div class="container pt-2 pb-5">
   <div class="row">
     <% if end_user_signed_in? %>
-      <div class="col-12 text-center">
+      <div class="col-12 text-center mb-2">
         <%= render 'public/searches/search', range: @range %>
+      </div>
+      <div class="col-12 text-center" style="background-color: #f5deb3; border-radius: 10px;">
         <h1 class="p-4">
           <strong>
             ようこそ My Diary へ
             <i class="fa-solid fa-book-open"></i>
           </strong>
         </h1>
-        <h5>
+        <h5 class="pb-4">
           My Diaryをご利用いただきありがとうございます。<br>
           このサイトでは運動や身体に関する記録をしたり、投稿・チャットを利用して交流ができます。
         </h5>
