@@ -11,7 +11,6 @@ class Public::PostsController < ApplicationController
        flash[:notice] = '投稿しました。'
        redirect_to posts_path
     else
-      @posts = Post.all
       render 'new'
     end
   end
@@ -22,7 +21,6 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @end_user = EndUser.find(@post.end_user.id)
     @post_comment = PostComment.new
     @post_comments = @post.post_comments.joins(:end_user).where(end_users: { is_deleted: false }).page(params[:page]).order(created_at: :desc)
   end

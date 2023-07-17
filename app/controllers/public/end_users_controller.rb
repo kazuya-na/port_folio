@@ -41,7 +41,6 @@ class Public::EndUsersController < ApplicationController
   end
 
   def favorites
-    @posts = Post.page(params[:page])
     favorites = Favorite.where(end_user_id: @end_user.id).pluck(:post_id)
     @favorite_posts = Post.order(created_at: :desc).find(favorites)
   end

@@ -9,6 +9,7 @@
     <div class="col-12 text-right">
       <%= link_to 'チャットルーム作成', new_chat_room_path, class: 'btn btn-primary mb-2' %>
     </div>
+    
     <div class="col-12 mx-auto">
       <table class='table border border-dark'>
         <thead class="bg-dark text-light">
@@ -19,6 +20,8 @@
             <th colspan="4"></th>
           </tr>
         </thead>
+        
+        <!--チャットルーム一覧-->
         <tbody style="background-color: #ffffff;">
           <% @chat_rooms.each do |chat_room| %>
             <% if current_end_user == chat_room.end_user || (current_end_user.following?(chat_room.end_user) && chat_room.end_user.following?(current_end_user)) %>
