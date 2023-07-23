@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 unless Admin.find_by(email: 'admin@gmail.com')
   Admin.create!(
      email: 'admin@gmail.com',
