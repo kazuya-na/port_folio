@@ -28,7 +28,7 @@
 ## 設計書
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1rTOe5g69elAvfC-DNBz58hfGzj8v_cc7-R-5UBYCSZg/edit#gid=232543798)
 - [ER図](https://app.diagrams.net/#G1CgRWTrW44R_nz6-jk2osqYYBALJkmlQu)
-- [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1HSDqwhFqhExke7XQPeH5h-dyCp0KASuC/edit#gid=2011536470)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1HSDqwhFqhExke7XQPeH5h-dyCp0KASuC/edit#gid=2011536470)
 
 ## 開発環境
 - OS：Linux(CentOS)
