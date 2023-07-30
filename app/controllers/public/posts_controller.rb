@@ -26,6 +26,7 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    # 他人が削除でき脆弱になっている
     post = Post.find(params[:id])
     post.destroy
     flash[:alert] = '投稿を削除しました。'
