@@ -1,0 +1,15 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col text-center">
+      <strong class="h3">本当に退会しますか？</strong>
+      <p>
+        退会すると、会員登録情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。
+      </p>
+      <!--退会する・退会しないのパスがうまくいっていない-->
+      <%= link_to "退会する", admin_withdraw_path, method: :patch, "data-confirm" => "このユーザーを退会させますか？", class:'btn btn-danger' %>
+      <%= link_to "退会しない", admin_end_users_path, class:'btn btn-secondary' %>
+    </div>
+  </div>
+</div>

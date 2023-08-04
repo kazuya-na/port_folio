@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top' => 'homes#top'
+    # 退会確認画面のroutesを追加
+    get 'withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
+    patch 'withdraw' => 'end_users#withdraw', as: 'withdraw'
     resources :end_users, only: [:index, :show, :edit, :update]
   end
 
@@ -24,7 +27,7 @@ Rails.application.routes.draw do
     get 'end_users/withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
     patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw'
     resources :diaries, only: [:create, :index, :show, :edit, :update, :destroy]
-    
+
     resources :posts, only: [:new, :create, :index, :show, :destroy] do
       resources:post_comments, only: [:create, :destroy]
       resource:favorites, only: [:create, :destroy]

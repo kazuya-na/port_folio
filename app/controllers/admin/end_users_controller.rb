@@ -21,6 +21,13 @@ class Admin::EndUsersController < ApplicationController
     end
   end
 
+# ユーザーの退会確認画面を表示させるためwithdraw_confirm,withdrawを
+  def withdraw_confirm
+  end
+
+  def withdraw
+  end
+
   private
 
   def end_user_params

@@ -10,7 +10,7 @@
       <% if end_user.nick_name != "guestuser" %>
         <div class="col text-center p-2" style="border-radius: 10px;">
           <h4>
-            <%= link_to(end_user) do %>
+            <%= link_to admin_end_user_path(end_user) do %>
               <%= image_tag end_user.get_profile_image, size: '200x200' %><br>
               <%= end_user.nick_name %><br>
             <% end %>
