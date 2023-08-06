@@ -13,9 +13,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top' => 'homes#top'
-    # 退会確認画面のroutesを追加
-    get 'withdraw_confirm' => 'end_users#withdraw_confirm', as: 'withdraw_confirm'
-    patch 'withdraw' => 'end_users#withdraw', as: 'withdraw'
     resources :end_users, only: [:index, :show, :edit, :update]
   end
 

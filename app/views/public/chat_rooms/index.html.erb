@@ -1,15 +1,15 @@
+<div class="text-center p-2">
+  <h3 class="text-light" style="background-color: #dc143c; border-radius: 5px;"><%= flash[:alert] %></h3>
+</div>
 <div class="container p-5">
   <div class="row">
-    <div class="col text-danger">
-      <h5><%= flash[:alert] %></h5>
-    </div>
     <div class="col-12 text-center">
       <h1><strong>チャットルーム一覧</strong></h1>
     </div>
     <div class="col-12 text-right">
       <%= link_to 'チャットルーム作成', new_chat_room_path, class: 'btn btn-primary mb-2' %>
     </div>
-    
+
     <div class="col-12 mx-auto">
       <table class='table border border-dark'>
         <thead class="bg-dark text-light">
@@ -20,7 +20,7 @@
             <th colspan="4"></th>
           </tr>
         </thead>
-        
+
         <!--チャットルーム一覧-->
         <tbody style="background-color: #ffffff;">
           <% @chat_rooms.each do |chat_room| %>
