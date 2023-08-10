@@ -4,14 +4,13 @@
       <%= render 'public/searches/search', range: @range %>
       <h1 class="pt-4"><strong>会員一覧</strong></h1>
     </div>
-  </div>
-  <div class="row row-cols-3">
+
     <% @end_users.each do |end_user| %>
       <% if end_user.nick_name != "guestuser" %>
-        <div class="col text-center p-2">
+        <div class="col-lg-4 text-center p-2">
           <h4>
             <%= link_to(end_user) do %>
-              <%= image_tag end_user.get_profile_image, size: '200x200' %><br>
+              <%= image_tag end_user.get_profile_image, size: '200x200', class: 'rounded-circle border border-dark' %><br>
               <%= end_user.nick_name %><br>
             <% end %>
           </h4>

@@ -10,41 +10,27 @@
       <%= link_to 'チャットルーム作成', new_chat_room_path, class: 'btn btn-primary mb-2' %>
     </div>
 
-    <div class="col-12 mx-auto">
-      <table class='table border border-dark'>
-        <thead class="bg-dark text-light">
-          <tr>
-            <th>タイトル</th>
-            <th>内容</th>
-            <th>オーナー</th>
-            <th colspan="4"></th>
-          </tr>
-        </thead>
-
-        <!--チャットルーム一覧-->
-        <tbody style="background-color: #ffffff;">
-          <% @chat_rooms.each do |chat_room| %>
-            <% if current_end_user == chat_room.end_user || (current_end_user.following?(chat_room.end_user) && chat_room.end_user.following?(current_end_user)) %>
-              <tr>
-                <td class="border-dark">
-                  <%= link_to(chat_room) do %>
-                    <%= chat_room.title %>
-                  <% end %>
-                </td>
-                <td class="border-dark"><%= chat_room.introduction.truncate(24, omission: '...') %></td>
-                <td class="border-dark"><%= chat_room.end_user.nick_name %></td>
-                <td class="border-dark">
-                  <% if chat_room.end_user == current_end_user %>
-                    <%= link_to chat_room_path(chat_room), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
-                      <i class="fa-solid fa-trash-can"></i> 削除
-                    <% end %>
-                  <% end %>
-                </td>
-              </tr>
+    <% @chat_rooms.each do |chat_room| %>
+      <% if current_end_user == chat_room.end_user || (current_end_user.following?(chat_room.end_user) && chat_room.end_user.following?(current_end_user)) %>
+      <div class="col-lg-3 border border-dark bg-light text-center p-4 m-4" style="border-radius: 10px;">
+        <h4>
+          <%= link_to(chat_room) do %>
+            <%= chat_room.title %>
+          <% end %>
+        </h4>
+        <h5><%= chat_room.introduction.truncate(15, omission: '...') %></h5>
+        <h5><%= chat_room.end_user.nick_name %></h5>
+        <h5>
+          <% if chat_room.end_user == current_end_user %>
+            <%= link_to chat_room_path(chat_room), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+              <i class="fa-solid fa-trash-can"></i> 削除
             <% end %>
           <% end %>
-        </tbody>
-      </table>
+        </h5>
+      </div>
+      <% end %>
+    <% end %>
+    <div class="col-12 text-center pt-4">
       <%= paginate @chat_rooms %>
     </div>
   </div>

@@ -13,35 +13,24 @@
         <%= link_to '新規投稿', new_post_path, class:'btn btn-primary mb-2' %>
       <% end %>
     </div>
-  </div>
-  <table class='table border border-dark'>
-    <thead class="bg-dark text-light">
-      <tr>
-        <th>タイトル</th>
-        <th>本文</th>
-        <th>投稿者</th>
-        <th colspan="4"></th>
-      </tr>
-    </thead>
-    <tbody style="background-color: #ffffff;">
-      <% @posts.each do |post| %>
-        <tr>
-          <td class="border-dark"><%= link_to post.title, post_path(post.id) %></td>
-          <td class="border-dark"><%= post.body.truncate(24, omission: '...') %></td>
-          <td class="border-dark"><%= post.end_user.nick_name %></td>
-          <td class="border-dark"<%= "favorite-#{post.id}" %> >
-           <%= render "public/favorites/favorite-btn", post: post %>
-          </td>
-          <td class="border-dark">
-            <% if post.end_user == current_end_user %>
-              <%= link_to post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
-                <i class="fa-solid fa-trash-can"></i> 削除
-              <% end %>
+
+    <% @posts.each do |post| %>
+      <div class="col-lg-3 border border-dark bg-light text-center p-4 m-4" style="border-radius: 10px;">
+        <h4><%= link_to post.title, post_path(post.id) %></h4>
+        <h5><%= post.body.truncate(15, omission: '...') %></h5>
+        <h5><%= post.end_user.nick_name %></h5>
+        <h5 class="border-dark"<%= "favorite-#{post.id}" %> >
+         <%= render "public/favorites/favorite-btn", post: post %>
+        </h5>
+        <h5>
+          <% if post.end_user == current_end_user %>
+            <%= link_to post_path(post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+              <i class="fa-solid fa-trash-can"></i> 削除
             <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+          <% end %>
+        </h5>
+      </div>
+    <% end %>
+  </div>
   <%= paginate @posts %>
 </div>

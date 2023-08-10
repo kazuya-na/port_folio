@@ -5,10 +5,10 @@
         <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
       <% end %>
     </div>
-    <div class="col-8 mx-auto">
+    <div class="col-md-8 mx-auto">
       <h1 class="text-center">チャットルーム新規作成画面</h1>
     </div>
-    <div class="col-6 mx-auto">
+    <div class="col-md-6 mx-auto">
       <%= form_with model: @chat_room, url: chat_rooms_path do |f| %>
         <div class="form-group">
           <%= f.label :'タイトル' %><br>

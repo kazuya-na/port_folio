@@ -12,12 +12,12 @@
     <div class="col-12 text-center h1 pb-4">
       <strong><%= @chat_room.title %></strong>
     </div>
-    <div class="col-5 text-center p-2">
+    <div class="col-md-5 text-center p-2">
       <h3>チャットルーム説明</h3>
-      <h4 class="border border-dark bg-light p-3"><%= @chat_room.introduction %></h4>
+      <h4 class="border border-dark bg-light p-3" style="border-radius: 10px;"><%= @chat_room.introduction %></h4>
       <h5 class="pt-2"><%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %></h5>
     </div>
-    <div class="col-7">
+    <div class="col-md-7">
       <table class="table m-5">
         <tbody style="background-color: #ffffff;">
           <% @chat_messages.each do |chat_message| %>

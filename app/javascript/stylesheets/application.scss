@@ -16,7 +16,7 @@ body {
 .pagination {
   justify-content: center;
 }
-
+// レスポンシブ対応記述中
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width: 1024px) {
   body {
