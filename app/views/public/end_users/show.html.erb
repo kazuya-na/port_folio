@@ -14,11 +14,11 @@
     <div class="col-12 text-center h1">
       <strong><%= @end_user.nick_name %>さんのマイページ</strong>
     </div>
-    <div class="col-4 pt-4">
+    <div class="col-lg-4 pt-4">
       <h3>会員情報</h3>
       <%= render 'info', end_user: @end_user %>
     </div>
-    <div class="col-8">
+    <div class="col-lg-8">
       <% if @end_user.nick_name != "guestuser" %>
         <h3 class="pt-4">
           <%= @end_user.nick_name %>さんの投稿一覧
@@ -40,7 +40,7 @@
             <% @posts.each do |post| %>
               <tr>
                 <td><%= post.title %></td>
-                <td><%= post.body.truncate(24, omission: '...') %></td>
+                <td><%= post.body.truncate(15, omission: '...') %></td>
                 <td>
                   <% if current_end_user.nick_name != "guestuser" %>
                     <% if @end_user == current_end_user %>

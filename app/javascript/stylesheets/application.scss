@@ -22,6 +22,10 @@ body {
   body {
     width: 100%;
     color: green;
+    table tr,
+    table td{
+      display: block;
+    }
   }
 }
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */

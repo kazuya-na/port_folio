@@ -5,14 +5,14 @@
         <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
       <% end %>
     </div>
-    <div class="col-12 text-center pb-4">
+    <div class="col-md-12 text-center pb-4">
       <h1>プロフィール編集画面</h1>
     </div>
-    <div class="col-8 mx-auto h5">
+    <div class="col-md-8 mx-auto h5">
       <%= form_with model: @end_user, url: end_user_path, method: :patch, local:true do |f| %>
         <table class="table h5">
           <tr>
-            <td>プロフィール画像</td>
+            <td><strong>プロフィール画像</strong></td>
             <td>
               <div class="form-group">
                 <%= f.file_field :profile_image %>
@@ -20,7 +20,7 @@
             </td>
           </tr>
           <tr>
-            <td>ニックネーム</td>
+            <td><strong>ニックネーム</strong></td>
             <td>
               <div class="field">
                 <%= f.text_field :nick_name, autocomplete: "nick_name" %>
@@ -28,7 +28,10 @@
             </td>
           </tr>
           <tr>
-            <td>メールアドレス(非公開)</td>
+            <td>
+              <strong>メールアドレス</strong>
+              <p class="text-danger h6">※非公開</p>
+            </td>
             <td>
               <div class="field">
                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -36,7 +39,7 @@
             </td>
           </tr>
           <tr>
-            <td>性別</td>
+            <td><strong>性別</strong></td>
             <td>
               <div class="field">
                 <%= f.radio_button :gender, EndUser.genders.key(0) %>
@@ -54,7 +57,7 @@
             </td>
           </tr>
           <tr>
-            <td>生年月日</td>
+            <td><strong>生年月日</strong></td>
             <td>
               <div class="field">
                 <%= f.date_select :date_of_birth, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 55), default: Date.new(1960, 1, 1) %>
@@ -62,7 +65,7 @@
             </td>
           </tr>
           <tr>
-            <td>自己紹介文</td>
+            <td><strong>自己紹介文</strong></td>
             <td>
               <div class="form-group">
                 <%= f.text_area :introduction, size: '30x5' %>
@@ -77,7 +80,7 @@
     </div>
   </div>
 </div>
-<div class="h5 text-right p-5">
+<div class="text-right p-5">
   <% if current_end_user.nick_name != "guestuser" %>
     <% if @end_user == current_end_user %>
       退会のお手続きは<%= link_to 'こちら', withdraw_confirm_path, class: 'btn btn-outline-danger m-1' %>からお願いいたします。
