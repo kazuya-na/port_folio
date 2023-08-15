@@ -17,8 +17,8 @@
     <% @posts.each do |post| %>
       <div class="col-lg-3 border border-dark bg-light text-center p-4 m-4" style="border-radius: 10px;">
         <h4><%= link_to post.title, post_path(post.id) %></h4>
-        <h5><%= post.body.truncate(15, omission: '...') %></h5>
-        <h5><%= post.end_user.nick_name %></h5>
+        <h5><%= post.body.truncate(10, omission: '...') %></h5>
+        <h5><%= post.end_user.nick_name %> さん</h5>
         <h5 class="border-dark"<%= "favorite-#{post.id}" %> >
          <%= render "public/favorites/favorite-btn", post: post %>
         </h5>

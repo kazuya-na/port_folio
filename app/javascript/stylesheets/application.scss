@@ -20,10 +20,9 @@ body {
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width: 1024px) {
   body {
-    width: 100%;
     color: green;
     table tr,
-    table td{
+    table td :not(border) {
       display: block;
     }
   }
@@ -40,5 +39,8 @@ body {
   body {
     width: 100%;
     color: blue;
+    table .none {
+      display: none;
+    }
   }
 }

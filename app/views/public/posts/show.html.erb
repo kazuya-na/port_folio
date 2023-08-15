@@ -9,15 +9,15 @@
         <i class="fa-solid fa-arrow-left"></i> 前のページに戻る
       <% end %>
     </div>
-    <div class="col-12 text-center pb-4 h1">
+    <div class="col-lg-12 text-center pb-4 h1">
       <strong><%= @post.title %></strong>
     </div>
-    <div class="col-5 text-center p-2">
+    <div class="col-lg-5 text-center p-2">
       <h3>本文</h3>
       <h4 class="border border-dark bg-light p-3"><%= @post.body %></h4>
       <h5 class="pt-2"><%= render "public/post_comments/form", post: @post, post_comment: @post_comment %></h5>
     </div>
-    <div class="col-7">
+    <div class="col-lg-7">
       <table class="table m-5">
         <tbody style="background-color: #ffffff;">
           <% @post_comments.each do |post_comment| %>

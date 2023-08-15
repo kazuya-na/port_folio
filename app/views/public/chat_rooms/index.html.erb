@@ -18,8 +18,8 @@
             <%= chat_room.title %>
           <% end %>
         </h4>
-        <h5><%= chat_room.introduction.truncate(15, omission: '...') %></h5>
-        <h5><%= chat_room.end_user.nick_name %></h5>
+        <h5><%= chat_room.introduction.truncate(10, omission: '...') %></h5>
+        <h5><%= chat_room.end_user.nick_name %> さん</h5>
         <h5>
           <% if chat_room.end_user == current_end_user %>
             <%= link_to chat_room_path(chat_room), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>

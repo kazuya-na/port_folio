@@ -5,13 +5,13 @@
 <h5 class="bg-danger text-center p-3 m-4" style="color: #fff700; border-radius: 10px;">
   <i class="fa-solid fa-triangle-exclamation" style="color: #fff700;"></i> 注意！具合が悪くなったり、痛みがある時は運動を中止しましょう。無理なく運動を継続させましょう！
 </h5>
-<div class="container pt-2 pb-5">
+<div class="container" style="background-color: #f0fff0; border-radius: 10px;">
   <div class="row">
     <% if end_user_signed_in? %>
       <div class="col-12 text-center mb-2">
         <%= render 'public/searches/search', range: @range %>
       </div>
-      <div class="col-12 text-center" style="background-color: #f5deb3; border-radius: 10px;">
+      <div class="col-12 text-center">
         <h1 class="p-4">
           <strong>
             ようこそ My Diary へ
@@ -24,101 +24,80 @@
         </h5>
       </div>
 
-      <div class="col-lg-5">
-        <table>
-          <tbody>
-            <tr style="text-align: center;">
-              <td class="pt-5">
-                <%= image_tag 'diary.png', size: '150x150', class: 'p-2' %>
-                <h4 class="text-light bg-success p-2" style="border-radius: 10px;">
-                  マイページの日誌ボタンから日々の記録をしてみよう！<br>
-                  <% if current_end_user.nick_name != "guestuser" %>
-                    <%= link_to '記録してみる', diaries_path, class: 'btn btn-light m-2' %>
-                  <% end %>
-                </h4>
-              </td>
-            </tr>
-            <tr style="text-align: center;">
-              <td class="pt-5">
-                <%= image_tag 'post.png', size: '200x150', class: 'p-2' %>
-                <h4 class="text-light bg-primary p-2" style="border-radius: 10px;">
-                  投稿して自分のことを他の人に知ってもらおう！<br>
-                  <% if current_end_user.nick_name != "guestuser" %>
-                    <%= link_to '投稿してみる', new_post_path, class:'btn btn-light m-2' %>
-                  <% end %>
-                </h4>
-              </td>
-            </tr>
-            <tr style="text-align: center;">
-              <td class="pt-5">
-                <%= image_tag 'chat.png', size: '200x200', class: 'p-2' %>
-                <h4 class="text-light bg-info p-2" style="border-radius: 10px;">
-                  お互いにフォローしてチャット機能を利用しよう！<br>
-                  <% if current_end_user.nick_name != "guestuser" %>
-                    <%= link_to 'フォローしてみる', end_users_path, class:'btn btn-light m-2' %>
-                  <% end %>
-                </h4>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="col-lg-1"></div>
-
-      <div class="col-lg-6">
-        <table>
-          <tbody>
-            <tr style="text-align: right;">
-              <td class="pt-5 pb-5">
-                <%= image_tag 'step_up.png', size: '100x80', class: 'p-2' %>
-                <h5>
-                  日誌に記録して、日々の運動と
-                  身体の調子を管理しましょう！
-                </h5>
-              </td>
-              <td class="pt-5 pb-5">
-                <%= image_tag 'memo.jpg', size: '300x200', class: 'rounded-circle' %>
-              </td>
-            </tr>
-            <tr style="text-align: left;">
-              <td class="pt-5 pb-5"><%= image_tag 'walking.jpg', size: '300x200', class: 'rounded-circle' %></td>
-              <td class="pt-5 pb-5">
-                <%= image_tag 'exercise.png', size: '100x70' %>
-                <h5>
-                  日々の運動を記録することで
-                  運動意欲を向上させましょう！
-                </h5>
-              </td>
-            </tr>
-            <tr style="text-align: right;">
-              <td class="pt-5">
-                <%= image_tag 'post.png', size: '100x80', class: 'p-2' %>
-                <h5>
-                  自分が取り組んだ運動や出来事を
-                  投稿して他の人に共有しよう！
-                </h5>
-              </td>
-              <td class="pt-5">
-                <%= image_tag 'talking.jpg', size: '300x200', class: 'rounded-circle' %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="col-lg-7 mx-auto text-center">
+        <%= image_tag 'diary.png', size: '150x150', class: 'p-2' %>
+        <h4 class="text-light bg-success p-2" style="border-radius: 10px;">
+          マイページの日誌ボタンから日々の記録をしてみよう！<br>
+          <% if current_end_user.nick_name != "guestuser" %>
+            <%= link_to '記録してみる', diaries_path, class: 'btn btn-light m-2' %>
+          <% end %>
+        </h4>
+        <%= image_tag 'post.png', size: '160x130', class: 'p-2' %>
+        <h4 class="text-light bg-primary p-2" style="border-radius: 10px;">
+          投稿して自分のことを他の人に知ってもらおう！<br>
+          <% if current_end_user.nick_name != "guestuser" %>
+            <%= link_to '投稿してみる', new_post_path, class:'btn btn-light m-2' %>
+          <% end %>
+        </h4>
+        <%= image_tag 'chat.png', size: '150x150', class: 'p-2' %>
+        <h4 class="text-light bg-info p-2" style="border-radius: 10px;">
+          お互いにフォローしてチャット機能を利用しよう！<br>
+          <span class="text-light h6">※チャット機能を利用するには相互フォローしている必要があります。</span><br>
+          <% if current_end_user.nick_name != "guestuser" %>
+            <%= link_to 'フォローしてみる', end_users_path, class:'btn btn-light m-2' %>
+          <% end %>
+        </h4>
       </div>
     <% else %>
-      <div class="col-10 mx-auto text-center">
-        <h1 class="pb-2"><strong>My Diary</strong></h1>
-        <h5 class="pb-4">
+      <div class="col-12 mx-auto text-center p-5">
+        <h1 class="pt-4"><strong>My Diary</strong></h1>
+        <h5 class="p-4" style="line-height:2.5rem;">
           このサイトは、退職後の運動不足になりがちな方々に向けての運動記録サイトです。<br>
           また、同じ様に運動をしている方々が投稿機能を使って交流できるのが特徴です。<br>
           SNSに慣れていない方でも使いやすい設計です。
         </h5>
-        <div class="m-4">
-          <%= image_tag 'memo.jpg', size: '450x300' %>
+      </div>
+      <div class="col-lg-12 text-center">
+        <h1>My Diaryで出来る3つの機能</h1>
+      </div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-5 mx-auto p-5">
+        <h2 class="text-success text-right">
+          ①記録 <%= image_tag 'diary.png', size: '70x70', class: 'p-2' %>
+        </h2>
+        <h5 style="line-height:2.5rem;">
+          日誌に記録して、日々の運動と身体の調子を管理しましょう！
+        </h5>
+        <div class="p-5"></div><br>
+        <div class="d-none d-md-block p-5">
+          <%= image_tag 'walking.jpg', size: '300x200', class: 'rounded-circle' %>
+        </div>
+        <div class="p-5"></div><br>
+        <h2 class="text-danger text-right">
+          ③チャット <%= image_tag 'chat.png', size: '80x80', class: 'p-2' %>
+        </h2>
+        <h5 style="line-height:2.5rem;">
+          相互フォローをして他のユーザーと交流しよう！
+        </h5>
+      </div>
+      <div class="col-lg-5 mx-auto">
+        <div class="p-5 d-none d-md-block">
+          <%= image_tag 'memo.jpg', size: '300x200', class: 'rounded-circle' %>
+        </div>
+        <div class="p-5"></div><br>
+        <h2 class="text-primary text-left">
+          ②投稿　<%= image_tag 'post.png', size: '70x60', class: 'p-2' %>
+        </h2>
+        <h5 style="line-height:2.5rem;">
+          自分が取り組んだ運動や出来事を投稿して他の人に共有しよう！
+        </h5>
+        <div class="p-5"></div><br>
+        <div class="p-5 d-none d-md-block">
+          <%= image_tag 'talking.jpg', size: '300x200', class: 'rounded-circle' %>
         </div>
       </div>
-      <div class="col-7 mx-auto text-center">
+      <div class="col-lg-1"></div>
+      <div class="col-10 mx-auto text-center p-5">
         <%= link_to 'さっそくやってみる',new_end_user_registration_path, class: "btn btn-md btn-primary" %>
       </div>
     <% end %>
