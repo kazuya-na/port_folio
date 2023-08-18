@@ -21,8 +21,7 @@ body {
 @media screen and (max-width: 1024px) {
   body {
     color: green;
-    table tr,
-    table td :not(border) {
+    .responsive {
       display: block;
     }
   }
@@ -30,14 +29,12 @@ body {
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width: 768px) {
   body {
-    width: 100%;
     color: red;
   }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
   body {
-    width: 100%;
     color: blue;
     table .none {
       display: none;

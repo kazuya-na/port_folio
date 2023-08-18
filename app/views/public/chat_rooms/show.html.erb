@@ -17,6 +17,7 @@
       <h4 class="border border-dark bg-light p-3" style="border-radius: 10px;"><%= @chat_room.introduction %></h4>
       <h5 class="pt-2"><%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %></h5>
     </div>
+
     <div class="col-lg-7">
       <table class="table m-5">
         <tbody style="background-color: #ffffff;">
@@ -32,7 +33,7 @@
                 </h5>
                 <%= chat_message.created_at.strftime('%Y-%m-%d %X') %>
               </td>
-              <td width="100">
+              <td>
                 <% if chat_message.end_user == current_end_user %>
                   <%= link_to chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
                     <i class="fa-solid fa-trash-can"></i> 削除
