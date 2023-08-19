@@ -18,8 +18,8 @@
       <h5 class="pt-2"><%= render 'public/chat_messages/form', chat_room: @chat_room, chat_message: @chat_message %></h5>
     </div>
 
-    <div class="col-lg-7">
-      <table class="table m-5">
+    <div class="col-lg-7 mx-auto">
+      <table class="table m-5" style="table-layout: fixed; width: 100%; word-wrap:break-word;">
         <tbody style="background-color: #ffffff;">
           <% @chat_messages.each do |chat_message| %>
             <tr>
@@ -33,9 +33,9 @@
                 </h5>
                 <%= chat_message.created_at.strftime('%Y-%m-%d %X') %>
               </td>
-              <td>
+              <td width="100px">
                 <% if chat_message.end_user == current_end_user %>
-                  <%= link_to chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger", remote: true do %>
+                  <%= link_to chat_room_chat_message_path(@chat_room, chat_message), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger" do %>
                     <i class="fa-solid fa-trash-can"></i> 削除
                   <% end %>
                 <% end %>

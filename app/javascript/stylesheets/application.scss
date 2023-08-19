@@ -21,7 +21,8 @@ body {
 @media screen and (max-width: 1024px) {
   body {
     color: green;
-    .responsive {
+    .responsive table tr,
+    .responsive table td {
       display: block;
     }
   }

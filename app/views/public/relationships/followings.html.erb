@@ -27,16 +27,16 @@
                     <%= end_user.nick_name %>
                   <% end %>
                 </td>
-                <td class="border-dark"><%= end_user.introduction %></td>
+                <td class="border-dark"><%= end_user.introduction.truncate(25, omission: '...') %></td>
                 <td class="border-dark text-center">
                   <% if end_user.is_deleted %>
                     <p class="text-danger">退会済み</p>
                   <% end %>
                 </td>
-                <td class="border-dark">
+                <td class="border-dark" width="150px">
                   <% unless end_user.id == current_end_user.id %>
                     <% if current_end_user.following?(end_user) %>
-                      <%= link_to "フォロー外す", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+                      <%= link_to "フォロー解除", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
                     <% else %>
                       <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
                     <% end %>
