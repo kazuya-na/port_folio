@@ -20,31 +20,29 @@
           </thead>
           <tbody>
             <% @end_users.each do |end_user| %>
-              <% if end_user.nick_name != "guestuser" %>
-                <tr class="h5">
-                  <td class="border-dark">
-                    <%= link_to(end_user) do %>
-                      <%= image_tag end_user.get_profile_image, size:'80x80' %><br>
-                      <%= end_user.nick_name %>
+              <tr class="h5">
+                <td class="border-dark">
+                  <%= link_to(end_user) do %>
+                    <%= image_tag end_user.get_profile_image, size:'80x80' %><br>
+                    <%= end_user.nick_name %>
+                  <% end %>
+                </td>
+                <td class="border-dark"><%= end_user.introduction %></td>
+                <td class="border-dark text-center">
+                  <% if end_user.is_deleted %>
+                    <p class="text-danger">退会済み</p>
+                  <% end %>
+                </td>
+                <td class="border-dark" width="150px">
+                  <% unless end_user.id == current_end_user.id %>
+                    <% if current_end_user.following?(end_user) %>
+                      <%= link_to "フォロー解除", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
+                    <% else %>
+                      <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
                     <% end %>
-                  </td>
-                  <td class="border-dark"><%= end_user.introduction %></td>
-                  <td class="border-dark text-center">
-                    <% if end_user.is_deleted %>
-                      <p class="text-danger">退会済み</p>
-                    <% end %>
-                  </td>
-                  <td class="border-dark" width="150px">
-                    <% unless end_user.id == current_end_user.id %>
-                      <% if current_end_user.following?(end_user) %>
-                        <%= link_to "フォロー解除", end_user_relationships_path(end_user.id), method: :delete, class: "btn btn-info" %>
-                      <% else %>
-                        <%= link_to "フォローする", end_user_relationships_path(end_user.id), method: :post, class: "btn btn-success" %>
-                      <% end %>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
+                  <% end %>
+                </td>
+              </tr>
             <% end %>
           </tbody>
         </table>
