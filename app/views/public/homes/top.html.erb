@@ -7,15 +7,15 @@
   <i class="fa-solid fa-triangle-exclamation" style="color: #fff700;"></i> 注意！具合が悪くなったり、痛みがある時は運動を中止しましょう。無理なく運動を継続させましょう！
 </h5>
 
-<div class="container pb-5">
-  <div class="row p-5" style="background-color: #f0fff0; border-radius: 10px;">
-    <% if end_user_signed_in? %>
-    
+<% if end_user_signed_in? %>
+
     <!--ログイン後-->
+  <div class="container pb-5">
+    <div class="row p-5" style="background-color: #f0fff0; border-radius: 10px;">
       <div class="col-12 text-center mb-2">
         <%= render 'public/searches/search', range: @range %>
       </div>
-      
+
       <div class="col-12 text-center">
         <h1 class="p-4">
           <strong>
@@ -53,10 +53,14 @@
           <% end %>
         </h4>
       </div>
-      
-    <% else %>
-    
+    </div>
+  </div>
+
+<% else %>
+
     <!--ログイン前-->
+  <div class="container p-4" style="background-color: #f0fff0; border-radius: 10px;">
+    <div class="row">
       <div class="col-12 mx-auto text-center">
         <h1 class="pt-4"><strong>My Diary</strong></h1>
         <h5 class="p-4" style="line-height:2.5rem;">
@@ -65,53 +69,57 @@
           SNSに慣れていない方でも使いやすい設計です。
         </h5>
       </div>
-      
+
       <div class="col-lg-12 text-center pt-5">
         <h2>My Diaryの機能</h2>
       </div>
-      
-      <div class="col-md-1"></div>
-      <div class="col-md-5 mx-auto p-5">
-        <h2 class="text-success text-right">
-          記録 <%= image_tag 'diary.png', size: '70x70', class: 'p-2' %>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-7 text-center p-5">
+        <h2 class="text-success">
+          ①記録 <%= image_tag 'diary.png', size: '70x70', class: 'p-2' %>
         </h2>
         <h5 style="line-height:2.5rem;">
-          日誌に記録して、日々の運動と身体の調子を管理しましょう！
+          日々の運動と身体の調子を日誌に記録して管理しよう！
         </h5>
-        <div class="p-5"></div><br>
-        <div class="d-none d-md-block p-5">
-          <%= image_tag 'walking.jpg', size: '300x200', class: 'rounded-circle' %>
-        </div>
-        <div class="p-5"></div><br>
-        <h2 class="text-danger text-right">
-          チャット <%= image_tag 'chat.png', size: '80x80', class: 'p-2' %>
+      </div>
+      <div class="top-image col-lg-5 p-5">
+        <%= image_tag 'memo.jpg', size: '300x200', class: 'rounded-circle' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="top-image col-lg-5 p-5">
+        <%= image_tag 'walking.jpg', size: '300x200', class: 'rounded-circle' %>
+      </div>
+      <div class="col-lg-7 text-center p-5">
+        <h2 class="text-primary">
+          ②投稿 <%= image_tag 'post.png', size: '70x60', class: 'p-2' %>
         </h2>
         <h5 style="line-height:2.5rem;">
-          相互フォローをして他のユーザーと交流しよう！
+          取り組んだ運動や出来事を投稿して他の人と共有しよう！
         </h5>
       </div>
-      
-      <div class="col-md-5 mx-auto">
-        <div class="p-5 d-none d-md-block">
-          <%= image_tag 'memo.jpg', size: '300x200', class: 'rounded-circle' %>
-        </div>
-        <div class="p-5"></div><br>
-        <h2 class="text-primary text-left">
-          投稿　<%= image_tag 'post.png', size: '70x60', class: 'p-2' %>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-7 text-center p-5">
+        <h2 class="text-danger">
+          ③チャット <%= image_tag 'chat.png', size: '80x80', class: 'p-2' %>
         </h2>
         <h5 style="line-height:2.5rem;">
-          自分が取り組んだ運動や出来事を投稿して他の人に共有しよう！
+          相互フォローをして他の人とチャットで交流しよう！
         </h5>
-        <div class="p-5"></div><br>
-        <div class="p-5 d-none d-md-block">
-          <%= image_tag 'talking.jpg', size: '300x200', class: 'rounded-circle' %>
-        </div>
       </div>
-      <div class="col-md-1"></div>
-      
-      <div class="col-10 mx-auto text-center">
-        <%= link_to 'さっそくやってみる',new_end_user_registration_path, class: "btn btn-md btn-primary" %>
+      <div class="top-image col-lg-5 p-5">
+        <%= image_tag 'talking.jpg', size: '300x200', class: 'rounded-circle' %>
       </div>
-    <% end %>
+    </div>
+
+    <div class="col-10 mx-auto text-center">
+      <%= link_to 'さっそくやってみる',new_end_user_registration_path, class: "btn btn-md btn-primary" %>
+    </div>
   </div>
-</div>
+  <div class="p-4"></div>
+<% end %>

@@ -20,25 +20,27 @@ body {
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width: 1024px) {
   body {
-    color: green;
     .responsive table tr,
     .responsive table td {
       display: block;
+    }
+    .top-image {
+      display: none;
+      text-align: center;
     }
   }
 }
 /* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
 @media screen and (max-width: 768px) {
   body {
-    color: red;
+    table .none {
+      display: none;
+    }
   }
 }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width: 425px) {
   body {
-    color: blue;
-    table .none {
-      display: none;
-    }
+
   }
 }
