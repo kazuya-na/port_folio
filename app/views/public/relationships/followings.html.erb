@@ -27,7 +27,7 @@
                     <%= end_user.nick_name %>
                   <% end %>
                 </td>
-                <td class="border-dark"><%= end_user.introduction.truncate(25, omission: '...') %></td>
+                <td class="border-dark"><%= end_user.introduction %></td>
                 <td class="border-dark text-center">
                   <% if end_user.is_deleted %>
                     <p class="text-danger">退会済み</p>
