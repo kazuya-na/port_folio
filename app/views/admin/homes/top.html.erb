@@ -2,97 +2,73 @@
   <h3 class="text-light" style="background-color: #3cb371; border-radius: 5px;"><%= flash[:notice] %></h3>
   <h3 class="text-light" style="background-color: #dc143c; border-radius: 5px;"><%= flash[:alert] %></h3>
 </div>
+
 <h5 class="bg-danger text-center p-3 m-4" style="color: #fff700; border-radius: 10px;">
   <i class="fa-solid fa-triangle-exclamation" style="color: #fff700;"></i> 注意！具合が悪くなったり、痛みがある時は運動を中止しましょう。無理なく運動を継続させましょう！
 </h5>
-<div class="container pt-2 pb-5">
-  <div class="row">
-    <div class="col-12 text-center">
-      <%= render 'public/searches/search', range: @range %>
-      <h1 class="p-4">
+
+<div class="container pb-5" style="background-color: #f0fff0; border-radius: 10px;">
+    <div class="row">
+    <div class="col-12 mx-auto text-center">
+      <h1 class="pt-5">
         <strong>
           ようこそ My Diary へ
           <i class="fa-solid fa-book-open"></i>
         </strong>
       </h1>
-      <h5>
-        My Diaryをご利用いただきありがとうございます。<br>
-        このサイトでは運動や身体に関する記録をしたり、投稿・チャットを利用して交流ができます。
+      <h5 class="p-4" style="line-height:2.5rem;">
+        このサイトは、退職後の運動不足になりがちな方々に向けての運動記録サイトです。<br>
+        また、同じ様に運動をしている方々が投稿機能を使って交流できるのが特徴です。<br>
+        SNSに慣れていない方でも使いやすい設計です。
       </h5>
     </div>
 
-    <div class="col-5">
-      <table>
-        <tbody>
-          <tr style="text-align: center;">
-            <td class="pt-5">
-              <%= image_tag 'diary.png', size: '150x150', class: 'p-2' %>
-              <h4 class="text-light bg-success p-2" style="border-radius: 10px;">
-                マイページの日誌ボタンから日々の記録をしてみよう！<br>
-              </h4>
-            </td>
-          </tr>
-          <tr style="text-align: center;">
-            <td class="pt-5">
-              <%= image_tag 'post.png', size: '200x150', class: 'p-2' %>
-              <h4 class="text-light bg-primary p-2" style="border-radius: 10px;">
-                投稿して自分のことを他の人に知ってもらおう！<br>
-              </h4>
-            </td>
-          </tr>
-          <tr style="text-align: center;">
-            <td class="pt-5">
-              <%= image_tag 'chat.png', size: '200x200', class: 'p-2' %>
-              <h4 class="text-light bg-info p-2" style="border-radius: 10px;">
-                お互いにフォローしてチャット機能を利用しよう！<br>
-              </h4>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="col-lg-12 text-center pt-5">
+      <h2>My Diaryの機能</h2>
     </div>
+  </div>
 
-    <div class="col-1"></div>
+  <div class="row">
+    <div class="col-lg-7 text-center p-5">
+      <h2 class="text-success">
+        ①記録 <%= image_tag 'diary.png', size: '70x70', class: 'p-2' %>
+      </h2>
+      <h5 style="line-height:2.5rem;">
+        日々の運動と身体の調子を日誌に記録して管理しよう！
+      </h5>
+    </div>
+    <div class="top-image col-lg-5 p-5">
+      <%= image_tag 'memo.jpg', size: '300x200', class: 'rounded-circle' %>
+    </div>
+  </div>
 
-    <div class="col-6">
-      <table>
-        <tbody>
-          <tr style="text-align: right;">
-            <td class="pt-5 pb-5">
-              <%= image_tag 'step_up.png', size: '100x80', class: 'p-2' %>
-              <h5>
-                日誌に記録して、日々の運動と<br>
-                身体の調子を管理しましょう！
-              </h5>
-            </td>
-            <td class="pt-5 pb-5">
-              <%= image_tag 'memo.jpg', size: '300x200', class: 'rounded-circle' %>
-            </td>
-          </tr>
-          <tr style="text-align: left;">
-            <td class="pt-5 pb-5"><%= image_tag 'walking.jpg', size: '300x200', class: 'rounded-circle' %></td>
-            <td class="pt-5 pb-5">
-              <%= image_tag 'exercise.png', size: '100x70' %>
-              <h5>
-                日々の運動を記録することで<br>
-                運動意欲を向上させましょう！
-              </h5>
-            </td>
-          </tr>
-          <tr style="text-align: right;">
-            <td class="pt-5">
-              <%= image_tag 'post.png', size: '100x80', class: 'p-2' %>
-              <h5>
-                自分が取り組んだ運動や出来事を<br>
-                投稿して他の人に共有しよう！
-              </h5>
-            </td>
-            <td class="pt-5">
-              <%= image_tag 'talking.jpg', size: '300x200', class: 'rounded-circle' %>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="row">
+    <div class="top-image col-lg-5 p-5">
+      <%= image_tag 'walking.jpg', size: '300x200', class: 'rounded-circle' %>
+    </div>
+    <div class="col-lg-7 text-center p-5">
+      <h2 class="text-primary">
+        ②投稿 <%= image_tag 'post.png', size: '70x60', class: 'p-2' %>
+      </h2>
+      <h5 style="line-height:2.5rem;">
+        取り組んだ運動や出来事を投稿して他の人と共有しよう！
+      </h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7 text-center p-5">
+      <h2 class="text-danger">
+        ③チャット <%= image_tag 'chat.png', size: '80x80', class: 'p-2' %>
+      </h2>
+      <h5 style="line-height:2.5rem;">
+        相互フォローをして他の人とチャットで交流しよう！
+      </h5>
+    </div>
+    <div class="top-image col-lg-5 p-5">
+      <%= image_tag 'talking.jpg', size: '300x200', class: 'rounded-circle' %>
     </div>
   </div>
 </div>
+
+<div class="p-4"></div>

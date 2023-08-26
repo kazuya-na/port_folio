@@ -1,36 +1,44 @@
-<table class="table border border-dark">
-  <thead class="bg-dark text-light">
-    <th>アイコン</th>
-    <th>ニックネーム</th>
-    <th>性別</th>
-    <th>生年月日(年齢)</th>
-    <th>自己紹介</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="border-dark" width="100">
-        <%= image_tag end_user.get_profile_image, size:'50x50' %>
-      </td>
-      <td class="border-dark" width="150">
-        <strong><%= end_user.nick_name %></strong><br>
-        <%= end_user.email %>
-      </td>
-
-      <td class="border-dark" width="80"><%= end_user.gender_i18n %></td>
-      <td class="border-dark" width="200">
-        <div class='row'>
-          <%= "#{end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %>
-        </div>
-      </td>
-      <td class="border-dark" width="600"><%= end_user.introduction %></td>
-      <td class="border-dark" width="80">
-        <% if @end_user.is_deleted %>
-          <p class="text-danger">退会</p>
-        <% else %>
-          <p class="text-success">有効</p>
-        <% end %>
-      </td>
-    </tr>
+<table class="table h5">
+  <% if end_user.nick_name != "guestuser" %>
+    <tbody>
+      <tr>
+        <td>
+          <%= image_tag end_user.get_profile_image, size:'150x150' %><br>
+          <strong><%= end_user.nick_name %></strong>
+          <%= link_to '編集', edit_admin_end_user_path(@end_user), class: 'btn btn-success m-1' %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= "#{end_user.date_of_birth.strftime('%Y年%m月%d日')} (#{(Date.current.strftime('%Y%m%d').to_i - end_user.date_of_birth.strftime('%Y%m%d').to_i) / 10000})" %><br>
+          性別：<%= end_user.gender_i18n %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <% if end_user.introduction.present? %>
+            <%= end_user.introduction %>
+          <% else %>
+            自己紹介文がありません。
+          <% end %>
+        </td>
+      </tr>
+    <% else %>
+      <tr>
+        <td>
+          <%= image_tag end_user.get_profile_image, size:'150x150' %><br>
+          <strong><%= end_user.nick_name %></strong>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          xx年xx月xx日(xx)<br>
+          性別：未登録
+        </td>
+      </tr>
+      <tr>
+        <td>新規登録するとここに自己紹介文が書き込めます。</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
