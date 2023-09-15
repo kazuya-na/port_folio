@@ -2,7 +2,7 @@
   <h3 class="text-light" style="background-color: #3cb371; border-radius: 5px;"><%= flash[:notice] %></h3>
   <h3 class="text-light" style="background-color: #dc143c; border-radius: 5px;"><%= flash[:alert] %></h3>
 </div>
-<div class="container p-2">
+<div class="container p-5" style="background-color: #f0fff0; border-radius: 10px;">
   <div class="row">
     <div class="col">
       <%= link_to end_user_path(current_end_user), class: 'btn btn-secondary' do %>
@@ -58,4 +58,8 @@
       <% end %>
     </div>
   </div>
+  <h4>最高血圧</h4>
+  <%= line_chart Diary.pluck(:date, :dbp) %>
+  <h4>最低血圧</h4>
+  <%= line_chart Diary.pluck(:date, :sbp) %>
 </div>

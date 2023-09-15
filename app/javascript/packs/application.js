@@ -15,6 +15,9 @@ import "../stylesheets/application";
 
 import "chartkick/chart.js"
 
+require("chartkick")
+require("chart.js")
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
