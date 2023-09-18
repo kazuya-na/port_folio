@@ -59,8 +59,8 @@
     </div>
   </div>
   <h4>最高血圧</h4>
-  <%= line_chart Diary.pluck(:date, :dbp) %>
+  <%= line_chart Diary.pluck(:date, :dbp), colors: ["#228b22"] %>
   <h4>最低血圧</h4>
-  <%= line_chart Diary.pluck(:date, :sbp) %>
+  <%= line_chart Diary.pluck(:date, :sbp), colors: ["#228b22"] %>
 </div>
 <div class="p-4"></div>
